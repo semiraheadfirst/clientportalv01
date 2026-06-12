@@ -1,0 +1,235 @@
+/* =============================================================
+   Foundation page building blocks
+   Swatch grids, type specimens, spacing rulers, radius demos,
+   shadow panels. Reused across all Foundation pages.
+   ============================================================= */
+
+/* ---------- Color swatches ---------- */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+.swatch {
+  background: var(--surface-card);
+  border: 1px solid var(--neutral-20);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.swatch-chip {
+  height: 96px;
+  position: relative;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  color: var(--neutral-00);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.swatch-chip.on-light { color: var(--neutral-90); }
+.swatch-body { padding: var(--space-3) var(--space-4) var(--space-4); }
+.swatch-body .name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--neutral-90);
+  margin: 0 0 2px;
+}
+.swatch-body .tok {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--neutral-60);
+  word-break: break-all;
+}
+.swatch-body .desc {
+  font-size: var(--fs-xs);
+  color: var(--neutral-60);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ---------- Scale row (for color families) ---------- */
+.scale-row {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 1px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+  border: 1px solid var(--neutral-20);
+}
+.scale-cell {
+  aspect-ratio: 1 / 1.1;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(29,29,27,0.7);
+}
+.scale-cell.on-dark { color: rgba(255,255,255,0.8); }
+.scale-cell .w { font-weight: 700; }
+
+/* ---------- Type specimens ---------- */
+.type-specimen {
+  background: var(--surface-card);
+  border: 1px solid var(--neutral-20);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: var(--space-6);
+  align-items: end;
+  margin-bottom: var(--space-3);
+}
+.type-specimen .preview {
+  font-family: var(--font-display);
+  color: var(--neutral-90);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+.type-specimen .meta {
+  border-left: 1px solid var(--neutral-20);
+  padding-left: var(--space-5);
+  font-size: var(--fs-xs);
+  color: var(--neutral-60);
+  font-family: var(--font-mono);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.type-specimen .meta strong {
+  color: var(--neutral-90);
+  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  letter-spacing: 0;
+}
+@media (max-width: 720px) {
+  .type-specimen { grid-template-columns: 1fr; align-items: start; }
+  .type-specimen .meta { border-left: none; border-top: 1px solid var(--neutral-20); padding: var(--space-4) 0 0; }
+}
+
+/* ---------- Spacing ruler ---------- */
+.spacing-rows {
+  background: var(--surface-card);
+  border: 1px solid var(--neutral-20);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+}
+.spacing-row {
+  display: grid;
+  grid-template-columns: 90px 90px 1fr;
+  gap: var(--space-5);
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-bottom: 1px dashed var(--neutral-20);
+  font-size: var(--fs-sm);
+}
+.spacing-row:last-child { border-bottom: none; }
+.spacing-row .tok {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--neutral-60);
+}
+.spacing-row .val {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--neutral-80);
+  font-weight: 600;
+}
+.spacing-row .bar {
+  height: 14px;
+  background: var(--striive-green);
+  border-radius: 3px;
+  max-width: 100%;
+}
+
+/* ---------- Radius grid ---------- */
+.radius-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+}
+.radius-cell {
+  background: var(--surface-card);
+  border: 1px solid var(--neutral-20);
+  padding: var(--space-4);
+  display: flex; flex-direction: column; gap: var(--space-3);
+  align-items: center;
+  text-align: center;
+}
+.radius-cell .sample {
+  width: 96px; height: 96px;
+  background: linear-gradient(135deg, var(--striive-green), var(--striive-green-bright));
+  box-shadow: var(--shadow-sm);
+}
+.radius-cell .name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--neutral-90);
+}
+.radius-cell .tok {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--neutral-60);
+}
+
+/* ---------- Shadow grid ---------- */
+.shadow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-4);
+  background: var(--neutral-05);
+  padding: var(--space-8);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neutral-20);
+}
+.shadow-cell {
+  aspect-ratio: 3 / 2;
+  background: var(--surface-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--neutral-60);
+  font-family: var(--font-mono);
+}
+.shadow-cell .name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--neutral-90);
+  font-size: var(--fs-sm);
+  letter-spacing: 0;
+}
+
+/* ---------- Border weights ---------- */
+.border-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+.border-cell {
+  background: var(--surface-card);
+  padding: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-3);
+}
+.border-cell .sample {
+  height: 64px;
+  background: var(--neutral-05);
+  border-radius: var(--radius-sm);
+}
+.border-cell .name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--neutral-90);
+}
+.border-cell .tok {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--neutral-60);
+}
+
+/* ---------- Two-column grid ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+@media (max-width: 760px) { .two-col { grid-template-columns: 1fr; } }

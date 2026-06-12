@@ -1,0 +1,307 @@
+/* =============================================================
+   STRIIVE DESIGN SYSTEM — DESIGN TOKENS
+   Single source of truth for color, type, spacing, radius, shadow.
+   Consumed by every design-system card and both UI kits.
+   ============================================================= */
+
+/* ---------- Fonts ------------------------------------------- */
+/* Single variable font file covers the full weight range (200–800).
+   Supports optical size (opsz) and width (wdth) axes too. */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-weight: 200 800;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/BricolageGrotesque-VariableFont_opsz_wdth_wght.ttf') format('truetype-variations'),
+       url('../fonts/BricolageGrotesque-VariableFont_opsz_wdth_wght.ttf') format('truetype');
+}
+
+:root {
+  /* ---------- Brand ---------------------------------------- */
+  /* Striive identity: warm, human, a little friendly.
+     Primary is a deep, confident green — taken from the brand mark.
+     The brighter #0DBB52 is reserved for the wordmark dots and small accents. */
+  --striive-ink:            #1D1D1B;   /* near-black headlines */
+  --striive-green:          #0B7F34;   /* PRIMARY — buttons, links, focus */
+  --striive-green-hover:    #086428;
+  --striive-green-bright:   #0DBB52;   /* wordmark dots, live indicators */
+  --striive-green-soft:     #E6F4EB;   /* surfaces / tints */
+  --striive-green-tint:     #D0EAD8;   /* hovered chips, sparse highlights */
+  --striive-coral:          #FF6B5A;   /* secondary / illustration accent, use sparingly */
+  --striive-plum:           #523A8A;   /* premium service tier, use sparingly */
+
+  /* Legacy aliases — kept so older files don't break.
+     Never introduce blue or yellow to new work; these are no-ops that
+     remap to the real brand colors. */
+  --striive-blue:         var(--striive-green);
+  --striive-blue-hover:   var(--striive-green-hover);
+  --striive-blue-soft:    var(--striive-green-soft);
+  --striive-mint:         var(--striive-green-tint);
+  --striive-butter:       var(--striive-green-soft);
+
+  /* ---------- Neutrals (warm grey scale) ------------------- */
+  --neutral-00:  #FFFFFF;
+  --neutral-05:  #F7F8FA;   /* = surface-ground, PrimeNG striive-light */
+  --neutral-10:  #F3F0EA;   /* subtle background */
+  --neutral-20:  #E7E2D8;   /* borders light */
+  --neutral-30:  #D1CCBF;   /* borders */
+  --neutral-40:  #A7A192;   /* disabled text */
+  --neutral-60:  #6F6A5D;   /* secondary text */
+  --neutral-80:  #3A3731;   /* body text on light */
+  --neutral-90:  #1D1D1B;   /* headlines */
+
+  /* ---------- Semantic ------------------------------------ */
+  --color-success:        #158A5C;
+  --color-success-soft:   #E3F5EC;
+  --color-warning:        #C98A00;
+  --color-warning-soft:   #FFF4D6;
+  --color-danger:         #C0392B;
+  --color-danger-soft:    #FBE7E4;
+  --color-info:           var(--striive-green);
+  --color-info-soft:      var(--striive-green-soft);
+
+  /* ---------- Surfaces ------------------------------------ */
+  /* ---------- Surfaces ------------------------------------ */
+  /* --surface-ground mirrors PrimeNG's Striive-light theme.
+     It's the page background everywhere — freelancer portal, client portal,
+     SuperStriive desk. Cards and content sit on --surface-card (white). */
+  --surface-ground:       #f7f8fa;
+  --surface-page:         var(--surface-ground);
+  --surface-card:         var(--neutral-00);
+  --surface-sunken:       var(--neutral-10);
+  --surface-border:       var(--neutral-20);
+  --surface-inverse:      var(--striive-ink);
+
+  /* ---------- Typography ---------------------------------- */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body:    'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale — mirrors PrimeFlex text-* utilities exactly.
+     Use PrimeFlex classes in templates (text-sm, text-lg, text-2xl…).
+     Use these vars only in custom SCSS where a utility class can't reach. */
+  --fs-xs:        0.75rem;    /* text-xs   · 12px */
+  --fs-sm:        0.875rem;   /* text-sm   · 14px */
+  --fs-base:      1rem;       /* text-base · 16px */
+  --fs-lg:        1.125rem;   /* text-lg   · 18px */
+  --fs-xl:        1.25rem;    /* text-xl   · 20px */
+  --fs-2xl:       1.5rem;     /* text-2xl  · 24px */
+  --fs-3xl:       1.875rem;   /* text-3xl  · 30px */
+  --fs-4xl:       2.25rem;    /* text-4xl  · 36px */
+  --fs-5xl:       3rem;       /* text-5xl  · 48px */
+  --fs-6xl:       3.75rem;    /* text-6xl  · 60px */
+  --fs-7xl:       4.5rem;     /* text-7xl  · 72px */
+
+  --lh-tight:     1.12;
+  --lh-snug:      1.25;
+  --lh-normal:    1.45;
+  --lh-loose:     1.65;
+
+  /* Letter-spacing — Bricolage wants a touch of negative tracking on big display */
+  --ls-display:   -0.02em;
+  --ls-headline:  -0.012em;
+  --ls-body:      0;
+  --ls-caps:      0.08em;
+
+  /* ---------- Spacing (4px grid) -------------------------- */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+  /* ---------- Radius -------------------------------------- */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+  --radius-2xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- Elevation ----------------------------------- */
+  --shadow-xs:  0 1px 2px rgba(29, 29, 27, 0.04),
+                0 0 0 1px rgba(29, 29, 27, 0.04);
+  --shadow-sm:  0 1px 2px rgba(29, 29, 27, 0.04),
+                0 2px 6px rgba(29, 29, 27, 0.06);
+  --shadow-md:  0 4px 12px rgba(29, 29, 27, 0.08),
+                0 2px 4px rgba(29, 29, 27, 0.04);
+  --shadow-lg:  0 12px 32px rgba(29, 29, 27, 0.12),
+                0 4px 8px rgba(29, 29, 27, 0.06);
+  --shadow-xl:  0 24px 64px rgba(29, 29, 27, 0.18),
+                0 8px 16px rgba(29, 29, 27, 0.08);
+  --shadow-focus: 0 0 0 3px rgba(11, 127, 52, 0.25);
+
+  /* ---------- Motion -------------------------------------- */
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:     120ms;
+  --dur-base:     200ms;
+  --dur-slow:     320ms;
+
+  /* ---------- Focus ring ---------------------------------- */
+  --focus-ring: 0 0 0 3px rgba(11, 127, 52, 0.28);
+}
+
+/* ---------- Base resets for design system pages ---------- */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Form elements don't inherit font by default — force them to match the page. */
+button, input, select, textarea, optgroup {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--neutral-80);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Shared layout primitives --------------------- */
+.ds-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8) var(--space-20);
+}
+.ds-page--wide { max-width: 1440px; }
+
+.ds-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--neutral-60);
+  margin: 0 0 var(--space-2);
+}
+
+.ds-h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  color: var(--neutral-90);
+  margin: 0 0 var(--space-3);
+}
+
+.ds-h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  letter-spacing: var(--ls-headline);
+  line-height: var(--lh-tight);
+  color: var(--neutral-90);
+  margin: 0 0 var(--space-3);
+}
+
+.ds-h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: var(--ls-headline);
+  line-height: var(--lh-snug);
+  color: var(--neutral-90);
+  margin: 0 0 var(--space-2);
+}
+
+.ds-lede {
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--neutral-60);
+  max-width: 72ch;
+  margin: 0 0 var(--space-8);
+  text-wrap: pretty;
+}
+
+.ds-prose { max-width: 72ch; }
+.ds-prose p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+.ds-prose strong { color: var(--neutral-90); font-weight: 600; }
+.ds-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--neutral-10);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+.ds-rule {
+  height: 1px;
+  background: var(--neutral-20);
+  border: none;
+  margin: var(--space-12) 0;
+}
+
+/* ---------- Utility card --------------------------------- */
+.ds-card {
+  background: var(--surface-card);
+  border: 1px solid var(--neutral-20);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+/* ---------- Table-like two-column definition ------------- */
+.ds-kv {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: var(--space-3) var(--space-6);
+  font-size: var(--fs-sm);
+}
+.ds-kv dt {
+  color: var(--neutral-60);
+  font-weight: 500;
+}
+.ds-kv dd {
+  margin: 0;
+  color: var(--neutral-80);
+}
+
+/* ---------- Do / Don't blocks ---------------------------- */
+.ds-do-dont {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+}
+.ds-do, .ds-dont {
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+}
+.ds-do {
+  background: var(--color-success-soft);
+  border-color: color-mix(in srgb, var(--color-success) 22%, transparent);
+}
+.ds-dont {
+  background: var(--color-danger-soft);
+  border-color: color-mix(in srgb, var(--color-danger) 22%, transparent);
+}
+.ds-do::before, .ds-dont::before {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+.ds-do::before   { content: 'Do';    color: var(--color-success); }
+.ds-dont::before { content: "Don't"; color: var(--color-danger); }
+.ds-do p, .ds-dont p { margin: 0; color: var(--neutral-80); font-size: var(--fs-sm); }
