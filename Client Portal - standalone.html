@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<!-- saved from url=(0334)https://fc926fe0-042b-47eb-846d-e256ca7ac238.claudeusercontent.com/v1/design/projects/fc926fe0-042b-47eb-846d-e256ca7ac238/serve/Client%20Portal%20-%20standalone.html?t=68a6d73d4c9be6ea69d798abed298601333d41adb17a7bc9b4ea74211637ba2e.858a331d-d010-44e9-b4b9-9d56d5f1f4ad.4012b014-9c6f-49bc-a849-e4e2658427d1.1781272172&srcmap=1&_wr=13 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+    .sc-placeholder{background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @keyframes sc-veil-pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine .73s ease infinite}
+    html.sc-dc-streaming::after{content:'';position:fixed;inset:0;
+      z-index:2147483646;pointer-events:none;
+      box-shadow:inset 0 0 90px rgba(217,119,87,.16),inset 0 0 22px rgba(217,119,87,.1);
+      animation:sc-veil-pulse 1.36s ease-in-out infinite}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:rgba(0,0,0,.7);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:rgba(0,0,0,.5);background:rgba(0,0,0,.05);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      html, body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      section, article, figure, table { break-inside: avoid; }
+      *, *::before, *::after {
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><script>window.__resources = {};</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="blob:https://fc926fe0-042b-47eb-846d-e256ca7ac238.claudeusercontent.com/68066cd6-78a6-4d75-843d-289449c5271e"></script>
+<script src="blob:https://fc926fe0-042b-47eb-846d-e256ca7ac238.claudeusercontent.com/50526d1f-c914-42e7-9ec6-8c568ae5a112"></script>
+<script src="blob:https://fc926fe0-042b-47eb-846d-e256ca7ac238.claudeusercontent.com/e177a94a-11c0-4435-bc83-4ba18d420f3d"></script>
+<script>
+window.__FIELD_SRC__ = "\u003c!DOCTYPE html\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003cmeta charset=\"utf-8\"\u003e\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1\"\u003e\n\u003cscript src=\"./support.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\u003cx-dc\u003e\n\u003cdiv style=\"display:flex;flex-direction:column;gap:6px;width:100%;\"\u003e\n  \u003cdiv style=\"display:flex;align-items:center;gap:7px;flex-wrap:wrap;min-height:18px;\"\u003e\n    \u003cspan style=\"font-size:12.5px;font-weight:600;color:var(--neutral-80);line-height:1.3;\"\u003e{{ f.l }}\u003c/span\u003e\n    \u003csc-if value=\"{{ f.req }}\" hint-placeholder-val=\"{{ true }}\"\u003e\u003cspan style=\"color:var(--color-danger);font-weight:700;font-size:13px;\"\u003e*\u003c/span\u003e\u003c/sc-if\u003e\n    \u003csc-if value=\"{{ f.bValidate }}\"\u003e\u003cspan style=\"font-size:10.5px;font-weight:700;letter-spacing:0.02em;color:var(--color-warning);background:var(--color-warning-soft);padding:2px 8px;border-radius:999px;white-space:nowrap;\"\u003e⬤ To validate\u003c/span\u003e\u003c/sc-if\u003e\n    \u003csc-if value=\"{{ f.bConfirmed }}\"\u003e\u003cspan style=\"font-size:10.5px;font-weight:700;letter-spacing:0.02em;color:var(--color-success);background:var(--color-success-soft);padding:2px 8px;border-radius:999px;white-space:nowrap;\"\u003e✓ Confirmed\u003c/span\u003e\u003c/sc-if\u003e\n  \u003c/div\u003e\n  \u003csc-if value=\"{{ f.isIn }}\"\u003e\n    \u003cdiv style=\"position:relative;display:flex;align-items:center;\"\u003e\n      \u003csc-if value=\"{{ f.hasPrefix }}\"\u003e\u003cspan style=\"position:absolute;left:12px;font-size:14px;color:var(--neutral-60);font-weight:500;pointer-events:none;\"\u003e{{ f.prefix }}\u003c/span\u003e\u003c/sc-if\u003e\n      \u003cinput type=\"{{ f.t }}\" placeholder=\"{{ f.p }}\" defaultValue=\"{{ f.v }}\" onChange=\"{{ f.onChange }}\" style=\"{{ f.inStyle }}\" style-focus=\"border-color:var(--striive-green);box-shadow:var(--focus-ring);\" /\u003e\n    \u003c/div\u003e\n  \u003c/sc-if\u003e\n  \u003csc-if value=\"{{ f.isSel }}\"\u003e\n    \u003cselect defaultValue=\"{{ f.v }}\" onChange=\"{{ f.onChange }}\" style=\"height:42px;padding:0 36px 0 13px;border:1px solid var(--neutral-30);border-radius:var(--radius-sm);background:var(--surface-card) url('data:image/svg+xml;utf8,\u003csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%236F6A5D%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22\u003e\u003cpolyline points=%226 9 12 15 18 9%22/\u003e\u003c/svg\u003e') no-repeat right 11px center;font-size:14px;font-family:inherit;color:var(--neutral-90);outline:none;width:100%;appearance:none;-webkit-appearance:none;cursor:pointer;\" style-focus=\"border-color:var(--striive-green);box-shadow:var(--focus-ring);\"\u003e\n      \u003coption value=\"\"\u003eSelect…\u003c/option\u003e\n      \u003csc-for list=\"{{ f.o }}\" as=\"opt\" hint-placeholder-count=\"3\"\u003e\u003coption value=\"{{ opt }}\"\u003e{{ opt }}\u003c/option\u003e\u003c/sc-for\u003e\n    \u003c/select\u003e\n  \u003c/sc-if\u003e\n  \u003csc-if value=\"{{ f.isTa }}\"\u003e\n    \u003ctextarea placeholder=\"{{ f.p }}\" defaultValue=\"{{ f.v }}\" rows=\"2\" style=\"padding:10px 13px;border:1px solid var(--neutral-30);border-radius:var(--radius-sm);background:var(--surface-card);font-size:14px;font-family:inherit;color:var(--neutral-90);outline:none;width:100%;resize:vertical;line-height:1.4;\" style-focus=\"border-color:var(--striive-green);box-shadow:var(--focus-ring);\"\u003e\u003c/textarea\u003e\n  \u003c/sc-if\u003e\n  \u003csc-if value=\"{{ f.hasHelp }}\"\u003e\u003cspan style=\"font-size:11.5px;color:var(--neutral-60);line-height:1.35;\"\u003e{{ f.h }}\u003c/span\u003e\u003c/sc-if\u003e\n\u003c/div\u003e\n\u003c/x-dc\u003e\n\u003cscript type=\"text/x-dc\" data-dc-script data-props=\"{&quot;$preview&quot;:{&quot;width&quot;:340,&quot;height&quot;:90},&quot;f&quot;:{&quot;editor&quot;:null,&quot;default&quot;:{&quot;l&quot;:&quot;Field label&quot;,&quot;isIn&quot;:true,&quot;t&quot;:&quot;text&quot;,&quot;v&quot;:&quot;&quot;,&quot;p&quot;:&quot;Placeholder&quot;,&quot;inStyle&quot;:&quot;height:42px;padding:0 13px;border:1px solid var(--neutral-30);border-radius:var(--radius-sm);background:var(--surface-card);font-size:14px;color:var(--neutral-90);outline:none;width:100%;&quot;}}}\"\u003e\u003c/script\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n";
+window.__MONDAY_SRC__ = "\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n\u003cmeta charset=\"utf-8\" /\u003e\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1\" /\u003e\n\u003ctitle\u003eVMS Configuration — Liander · monday.com\u003c/title\u003e\n\u003cstyle\u003e\n  * { box-sizing: border-box; }\n  html, body { margin: 0; padding: 0; }\n  body {\n    font-family: 'Figtree', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;\n    background: #ffffff;\n    color: #323338;\n    font-size: 14px;\n    -webkit-font-smoothing: antialiased;\n  }\n  .topbar {\n    display: flex; align-items: center; gap: 12px;\n    padding: 10px 18px;\n    border-bottom: 1px solid #e6e9ef;\n  }\n  .monday-mark { display: flex; align-items: center; gap: 7px; }\n  .monday-mark .dots { display: flex; gap: 3px; }\n  .monday-mark .dots i { width: 8px; height: 8px; border-radius: 50%; display: block; }\n  .monday-mark .wm { font-weight: 800; font-size: 16px; letter-spacing: -0.02em; color: #323338; }\n  .topbar .crumbs { color: #676879; font-size: 13px; }\n  .topbar .spacer { flex: 1; }\n  .topbar .pill { font-size: 12px; color: #676879; background: #f6f7fb; border: 1px solid #e6e9ef; border-radius: 6px; padding: 5px 10px; }\n\n  .board-head { padding: 16px 18px 6px; }\n  .board-head h1 { margin: 0 0 4px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }\n  .board-head .sub { color: #676879; font-size: 13px; }\n  .views { display: flex; gap: 4px; padding: 8px 18px 0; border-bottom: 1px solid #e6e9ef; }\n  .view { font-size: 13px; font-weight: 500; color: #676879; padding: 8px 12px; border-bottom: 2px solid transparent; cursor: default; }\n  .view.active { color: #323338; border-bottom-color: #0073ea; font-weight: 600; }\n\n  .board { padding: 14px 18px 40px; }\n  .group { margin-bottom: 22px; }\n  .group-title { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-weight: 700; font-size: 15px; }\n  .group-title .caret { color: inherit; font-size: 12px; }\n  .group-count { color: #a0a4ad; font-weight: 500; font-size: 12px; }\n\n  table { border-collapse: collapse; width: 100%; table-layout: fixed; }\n  th, td { text-align: left; padding: 0; }\n  .colbar td:first-child, .row td:first-child { width: 6px; padding: 0; }\n  thead th {\n    font-size: 12px; font-weight: 500; color: #676879;\n    padding: 6px 10px; border: 1px solid #e6e9ef; border-bottom: 1px solid #e6e9ef;\n    background: #fff;\n  }\n  .row td {\n    border: 1px solid #eceef3;\n    padding: 0;\n    height: 38px;\n    font-size: 13px;\n  }\n  .cell { padding: 8px 10px; display: flex; align-items: center; gap: 8px; height: 100%; }\n  .task { font-weight: 500; color: #323338; }\n  .check { width: 15px; height: 15px; border: 1.5px solid #c3c6d4; border-radius: 4px; flex: 0 0 auto; }\n\n  .owner { width: 26px; height: 26px; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 700; display: grid; place-items: center; }\n\n  .status { width: 100%; height: 100%; display: grid; place-items: center; color: #fff; font-size: 12.5px; font-weight: 500; }\n  .s-done { background: #00c875; }\n  .s-work { background: #fdab3d; }\n  .s-stuck { background: #e2445c; }\n  .s-none { background: #c4c4c4; }\n  .s-plan { background: #579bfc; }\n\n  .prio { width: 100%; height: 100%; display: grid; place-items: center; color: #fff; font-size: 12.5px; font-weight: 500; }\n  .p-high { background: #401694; }\n  .p-med { background: #5559df; }\n  .p-low { background: #9d99ff; }\n\n  .timeline { padding: 9px 10px; }\n  .tl-track { position: relative; height: 14px; background: #eceef3; border-radius: 999px; }\n  .tl-bar { position: absolute; top: 0; height: 14px; border-radius: 999px; }\n  .date { color: #676879; font-size: 12.5px; }\n  td.center { text-align: center; }\n  .status-td, .prio-td { padding: 0; }\n\u003c/style\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n  \u003cdiv class=\"topbar\"\u003e\n    \u003cdiv class=\"monday-mark\"\u003e\n      \u003cspan class=\"dots\"\u003e\u003ci style=\"background:#e2445c\"\u003e\u003c/i\u003e\u003ci style=\"background:#00c875\"\u003e\u003c/i\u003e\u003ci style=\"background:#fdab3d\"\u003e\u003c/i\u003e\u003c/span\u003e\n      \u003cspan class=\"wm\"\u003emonday.com\u003c/span\u003e\n    \u003c/div\u003e\n    \u003cspan class=\"crumbs\"\u003eHeadfirst Global &nbsp;›&nbsp; Client Implementation &nbsp;›&nbsp; Liander\u003c/span\u003e\n    \u003cspan class=\"spacer\"\u003e\u003c/span\u003e\n    \u003cspan class=\"pill\"\u003eShared view · read-only\u003c/span\u003e\n  \u003c/div\u003e\n\n  \u003cdiv class=\"board-head\"\u003e\n    \u003ch1\u003eVMS Configuration &amp; Implementation — Liander\u003c/h1\u003e\n    \u003cdiv class=\"sub\"\u003eProject plan managed by Customer Success · powered by AI · last updated 11 Jun 2026\u003c/div\u003e\n  \u003c/div\u003e\n  \u003cdiv class=\"views\"\u003e\n    \u003cdiv class=\"view active\"\u003eMain Table\u003c/div\u003e\n    \u003cdiv class=\"view\"\u003eTimeline\u003c/div\u003e\n    \u003cdiv class=\"view\"\u003eKanban\u003c/div\u003e\n    \u003cdiv class=\"view\"\u003eGantt\u003c/div\u003e\n    \u003cdiv class=\"view\"\u003eDashboard\u003c/div\u003e\n  \u003c/div\u003e\n\n  \u003cdiv class=\"board\" id=\"board\"\u003e\u003c/div\u003e\n\n  \u003cscript\u003e\n    const COLS = [\n      { key: 'task', label: 'Task', w: '30%' },\n      { key: 'owner', label: 'Owner', w: '70px', center: true },\n      { key: 'status', label: 'Status', w: '15%' },\n      { key: 'prio', label: 'Priority', w: '12%' },\n      { key: 'timeline', label: 'Timeline', w: '20%' },\n      { key: 'date', label: 'Due date', w: '11%' },\n    ];\n    const owners = {\n      JC: '#a25ddc', FG: '#00c875', SM: '#579bfc', LM: '#ff642e', PM: '#e2445c', TK: '#037f4c'\n    };\n    const groups = [\n      { name: 'Configuration', color: '#a25ddc', rows: [\n        ['Set up legal entities in VMS', 'JC', ['s-done','Done'], ['p-high','High'], [0,28,'#a25ddc'], '5 Jul'],\n        ['Configure billing & tax rules', 'FG', ['s-work','Working on it'], ['p-high','High'], [12,46,'#a25ddc'], '12 Jul'],\n        ['Build approval workflows', 'SM', ['s-work','Working on it'], ['p-med','Medium'], [22,60,'#a25ddc'], '18 Jul'],\n        ['Set up cost centres & GL mapping', 'JC', ['s-none','Not started'], ['p-med','Medium'], [40,72,'#a25ddc'], '24 Jul'],\n      ]},\n      { name: 'Integration & Data', color: '#00c875', rows: [\n        ['Load suppliers into VMS', 'FG', ['s-work','Working on it'], ['p-high','High'], [30,58,'#00c875'], '22 Jul'],\n        ['Load workers & assignments', 'SM', ['s-none','Not started'], ['p-high','High'], [48,74,'#00c875'], '29 Jul'],\n        ['Import rate cards', 'TK', ['s-none','Not started'], ['p-med','Medium'], [52,76,'#00c875'], '31 Jul'],\n        ['Connect Bullhorn VMS integration', 'JC', ['s-stuck','Stuck'], ['p-high','High'], [44,80,'#00c875'], '2 Aug'],\n      ]},\n      { name: 'Testing & UAT', color: '#579bfc', rows: [\n        ['Requisition-to-hire test', 'SM', ['s-none','Not started'], ['p-med','Medium'], [66,86,'#579bfc'], '12 Aug'],\n        ['Timesheet & invoice test', 'PM', ['s-none','Not started'], ['p-high','High'], [70,90,'#579bfc'], '18 Aug'],\n        ['Reporting & reconciliation', 'TK', ['s-none','Not started'], ['p-low','Low'], [74,92,'#579bfc'], '22 Aug'],\n      ]},\n      { name: 'Go-live', color: '#ff642e', rows: [\n        ['Cutover plan sign-off', 'JC', ['s-none','Not started'], ['p-high','High'], [88,96,'#ff642e'], '29 Aug'],\n        ['Go-live — programme live', 'LM', ['s-none','Not started'], ['p-high','High'], [96,100,'#ff642e'], '1 Sep'],\n      ]},\n    ];\n\n    function colgroup() {\n      return '\u003ccolgroup\u003e' + '\u003ccol style=\"width:6px\"\u003e' + COLS.map(c =\u003e `\u003ccol style=\"width:${c.w}\"\u003e`).join('') + '\u003c/colgroup\u003e';\n    }\n    function cell(col, r, color) {\n      if (col.key === 'task') return `\u003cdiv class=\"cell\"\u003e\u003cspan class=\"check\"\u003e\u003c/span\u003e\u003cspan class=\"task\"\u003e${r[0]}\u003c/span\u003e\u003c/div\u003e`;\n      if (col.key === 'owner') { const o = r[1]; return `\u003cdiv class=\"cell\" style=\"justify-content:center\"\u003e\u003cspan class=\"owner\" style=\"background:${owners[o]}\"\u003e${o}\u003c/span\u003e\u003c/div\u003e`; }\n      if (col.key === 'status') { const [cls, lbl] = r[2]; return `\u003cdiv class=\"status ${cls}\"\u003e${lbl}\u003c/div\u003e`; }\n      if (col.key === 'prio') { const [cls, lbl] = r[3]; return `\u003cdiv class=\"prio ${cls}\"\u003e${lbl}\u003c/div\u003e`; }\n      if (col.key === 'timeline') { const [a, b, col2] = r[4]; return `\u003cdiv class=\"timeline\"\u003e\u003cdiv class=\"tl-track\"\u003e\u003cdiv class=\"tl-bar\" style=\"left:${a}%;width:${b - a}%;background:${col2}\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e`; }\n      if (col.key === 'date') return `\u003cdiv class=\"cell\"\u003e\u003cspan class=\"date\"\u003e${r[5]}\u003c/span\u003e\u003c/div\u003e`;\n      return '';\n    }\n    function render() {\n      const board = document.getElementById('board');\n      board.innerHTML = groups.map(g =\u003e {\n        const head = `\u003cthead\u003e\u003ctr\u003e\u003cth style=\"border:none;background:none\"\u003e\u003c/th\u003e${COLS.map(c =\u003e `\u003cth${c.center ? ' class=\"center\"' : ''}\u003e${c.label}\u003c/th\u003e`).join('')}\u003c/tr\u003e\u003c/thead\u003e`;\n        const rows = g.rows.map(r =\u003e {\n          const tds = COLS.map(c =\u003e {\n            const pad = (c.key === 'status' || c.key === 'prio') ? ' class=\"status-td\"' : '';\n            return `\u003ctd${pad}\u003e${cell(c, r, g.color)}\u003c/td\u003e`;\n          }).join('');\n          return `\u003ctr class=\"row\"\u003e\u003ctd style=\"background:${g.color}\"\u003e\u003c/td\u003e${tds}\u003c/tr\u003e`;\n        }).join('');\n        return `\u003cdiv class=\"group\"\u003e\n          \u003cdiv class=\"group-title\" style=\"color:${g.color}\"\u003e\u003cspan class=\"caret\"\u003e▾\u003c/span\u003e ${g.name} \u003cspan class=\"group-count\"\u003e${g.rows.length} items\u003c/span\u003e\u003c/div\u003e\n          \u003ctable\u003e${colgroup()}${head}\u003ctbody\u003e${rows}\u003c/tbody\u003e\u003c/table\u003e\n        \u003c/div\u003e`;\n      }).join('');\n    }\n    render();\n  \u003c/script\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n";
+(function(){
+  var realFetch = window.fetch ? window.fetch.bind(window) : null;
+  window.fetch = function(input, opts){
+    var u = '';
+    try { u = (typeof input === 'string') ? input : (input && input.url) || ''; } catch(e){}
+    if (u.indexOf('Field.dc.html') !== -1) {
+      return Promise.resolve(new Response(window.__FIELD_SRC__, { status:200, headers:{'Content-Type':'text/html'} }));
+    }
+    if (!realFetch) return Promise.reject(new Error('offline'));
+    return realFetch(input, opts);
+  };
+})();
+</script>
+<style>x-dc{display:none!important}</style><style></style><style>html,body{height:100%;margin:0}#dc-root,#dc-root>.sc-host{height:100%}</style><style data-dc-tpl="1">/* =============================================================
+   STRIIVE DESIGN SYSTEM — DESIGN TOKENS
+   Single source of truth for color, type, spacing, radius, shadow.
+   Consumed by every design-system card and both UI kits.
+   ============================================================= */
+
+/* ---------- Fonts ------------------------------------------- */
+/* Single variable font file covers the full weight range (200–800).
+   Supports optical size (opsz) and width (wdth) axes too. */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-weight: 200 800;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+  src: url("blob:https://fc926fe0-042b-47eb-846d-e256ca7ac238.claudeusercontent.com/fb6732ac-85ca-4c17-b666-42d42c8c463f") format('truetype-variations'),
+       url("blob:https://fc926fe0-042b-47eb-846d-e256ca7ac238.claudeusercontent.com/fb6732ac-85ca-4c17-b666-42d42c8c463f") format('truetype');
+}
+
+:root {
+  /* ---------- Brand ---------------------------------------- */
+  /* Striive identity: warm, human, a little friendly.
+     Primary is a deep, confident green — taken from the brand mark.
+     The brighter #0DBB52 is reserved for the wordmark dots and small accents. */
+  --striive-ink:            #1D1D1B;   /* near-black headlines */
+  --striive-green:          #0B7F34;   /* PRIMARY — buttons, links, focus */
+  --striive-green-hover:    #086428;
+  --striive-green-bright:   #0DBB52;   /* wordmark dots, live indicators */
+  --striive-green-soft:     #E6F4EB;   /* surfaces / tints */
+  --striive-green-tint:     #D0EAD8;   /* hovered chips, sparse highlights */
+  --striive-coral:          #FF6B5A;   /* secondary / illustration accent, use sparingly */
+  --striive-plum:           #523A8A;   /* premium service tier, use sparingly */
+
+  /* Legacy aliases — kept so older files don't break.
+     Never introduce blue or yellow to new work; these are no-ops that
+     remap to the real brand colors. */
+  --striive-blue:         var(--striive-green);
+  --striive-blue-hover:   var(--striive-green-hover);
+  --striive-blue-soft:    var(--striive-green-soft);
+  --striive-mint:         var(--striive-green-tint);
+  --striive-butter:       var(--striive-green-soft);
+
+  /* ---------- Neutrals (warm grey scale) ------------------- */
+  --neutral-00:  #FFFFFF;
+  --neutral-05:  #F7F8FA;   /* = surface-ground, PrimeNG striive-light */
+  --neutral-10:  #F3F0EA;   /* subtle background */
+  --neutral-20:  #E7E2D8;   /* borders light */
+  --neutral-30:  #D1CCBF;   /* borders */
+  --neutral-40:  #A7A192;   /* disabled text */
+  --neutral-60:  #6F6A5D;   /* secondary text */
+  --neutral-80:  #3A3731;   /* body text on light */
+  --neutral-90:  #1D1D1B;   /* headlines */
+
+  /* ---------- Semantic ------------------------------------ */
+  --color-success:        #158A5C;
+  --color-success-soft:   #E3F5EC;
+  --color-warning:        #C98A00;
+  --color-warning-soft:   #FFF4D6;
+  --color-danger:         #C0392B;
+  --color-danger-soft:    #FBE7E4;
+  --color-info:           var(--striive-green);
+  --color-info-soft:      var(--striive-green-soft);
+
+  /* ---------- Surfaces ------------------------------------ */
+  /* ---------- Surfaces ------------------------------------ */
+  /* --surface-ground mirrors PrimeNG's Striive-light theme.
+     It's the page background everywhere — freelancer portal, client portal,
+     SuperStriive desk. Cards and content sit on --surface-card (white). */
+  --surface-ground:       #f7f8fa;
+  --surface-page:         var(--surface-ground);
+  --surface-card:         var(--neutral-00);
+  --surface-sunken:       var(--neutral-10);
+  --surface-border:       var(--neutral-20);
+  --surface-inverse:      var(--striive-ink);
+
+  /* ---------- Typography ---------------------------------- */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body:    'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale — mirrors PrimeFlex text-* utilities exactly.
+     Use PrimeFlex classes in templates (text-sm, text-lg, text-2xl…).
+     Use these vars only in custom SCSS where a utility class can't reach. */
+  --fs-xs:        0.75rem;    /* text-xs   · 12px */
+  --fs-sm:        0.875rem;   /* text-sm   · 14px */
+  --fs-base:      1rem;       /* text-base · 16px */
+  --fs-lg:        1.125rem;   /* text-lg   · 18px */
+  --fs-xl:        1.25rem;    /* text-xl   · 20px */
+  --fs-2xl:       1.5rem;     /* text-2xl  · 24px */
+  --fs-3xl:       1.875rem;   /* text-3xl  · 30px */
+  --fs-4xl:       2.25rem;    /* text-4xl  · 36px */
+  --fs-5xl:       3rem;       /* text-5xl  · 48px */
+  --fs-6xl:       3.75rem;    /* text-6xl  · 60px */
+  --fs-7xl:       4.5rem;     /* text-7xl  · 72px */
+
+  --lh-tight:     1.12;
+  --lh-snug:      1.25;
+  --lh-normal:    1.45;
+  --lh-loose:     1.65;
+
+  /* Letter-spacing — Bricolage wants a touch of negative tracking on big display */
+  --ls-display:   -0.02em;
+  --ls-headline:  -0.012em;
+  --ls-body:      0;
+  --ls-caps:      0.08em;
+
+  /* ---------- Spacing (4px grid) -------------------------- */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+  /* ---------- Radius -------------------------------------- */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+  --radius-2xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- Elevation ----------------------------------- */
+  --shadow-xs:  0 1px 2px rgba(29, 29, 27, 0.04),
+                0 0 0 1px rgba(29, 29, 27, 0.04);
+  --shadow-sm:  0 1px 2px rgba(29, 29, 27, 0.04),
+                0 2px 6px rgba(29, 29, 27, 0.06);
+  --shadow-md:  0 4px 12px rgba(29, 29, 27, 0.08),
+                0 2px 4px rgba(29, 29, 27, 0.04);
+  --shadow-lg:  0 12px 32px rgba(29, 29, 27, 0.12),
+                0 4px 8px rgba(29, 29, 27, 0.06);
+  --shadow-xl:  0 24px 64px rgba(29, 29, 27, 0.18),
+                0 8px 16px rgba(29, 29, 27, 0.08);
+  --shadow-focus: 0 0 0 3px rgba(11, 127, 52, 0.25);
+
+  /* ---------- Motion -------------------------------------- */
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:     120ms;
+  --dur-base:     200ms;
+  --dur-slow:     320ms;
+
+  /* ---------- Focus ring ---------------------------------- */
+  --focus-ring: 0 0 0 3px rgba(11, 127, 52, 0.28);
+}
+
+/* ---------- Base resets for design system pages ---------- */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Form elements don't inherit font by default — force them to match the page. */
+button, input, select, textarea, optgroup {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--neutral-80);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Shared layout primitives --------------------- */
+.ds-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8) var(--space-20);
+}
+.ds-page--wide { max-width: 1440px; }
+
+.ds-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--neutral-60);
+  margin: 0 0 var(--space-2);
+}
+
+.ds-h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  color: var(--neutral-90);
+  margin: 0 0 var(--space-3);
+}
+
+.ds-h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  letter-spacing: var(--ls-headline);
+  line-height: var(--lh-tight);
+  color: var(--neutral-90);
+  margin: 0 0 var(--space-3);
+}
+
+.ds-h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: var(--ls-headline);
+  line-height: var(--lh-snug);
+  color: var(--neutral-90);
+  margin: 0 0 var(--space-2);
+}
+
+.ds-lede {
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--neutral-60);
+  max-width: 72ch;
+  margin: 0 0 var(--space-8);
+  text-wrap: pretty;
+}
+
+.ds-prose { max-width: 72ch; }
+.ds-prose p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+.ds-prose strong { color: var(--neutral-90); font-weight: 600; }
+.ds-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--neutral-10);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+.ds-rule {
+  height: 1px;
+  background: var(--neutral-20);
+  border: none;
+  margin: var(--space-12) 0;
+}
+
+/* ---------- Utility card --------------------------------- */
+.ds-card {
+  background: var(--surface-card);
+  border: 1px solid var(--neutral-20);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+/* ---------- Table-like two-column definition ------------- */
+.ds-kv {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: var(--space-3) var(--space-6);
+  font-size: var(--fs-sm);
+}
+.ds-kv dt {
+  color: var(--neutral-60);
+  font-weight: 500;
+}
+.ds-kv dd {
+  margin: 0;
+  color: var(--neutral-80);
+}
+
+/* ---------- Do / Don't blocks ---------------------------- */
+.ds-do-dont {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+}
+.ds-do, .ds-dont {
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+}
+.ds-do {
+  background: var(--color-success-soft);
+  border-color: color-mix(in srgb, var(--color-success) 22%, transparent);
+}
+.ds-dont {
+  background: var(--color-danger-soft);
+  border-color: color-mix(in srgb, var(--color-danger) 22%, transparent);
+}
+.ds-do::before, .ds-dont::before {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+.ds-do::before   { content: 'Do';    color: var(--color-success); }
+.ds-dont::before { content: "Don't"; color: var(--color-danger); }
+.ds-do p, .ds-dont p { margin: 0; color: var(--neutral-80); font-size: var(--fs-sm); }
+</style><style data-dc-tpl="2">
+  @keyframes cpFade { from { transform:translateY(8px); } to { transform:none; } }
+  input::placeholder, textarea::placeholder { color: var(--neutral-40); }
+  select option { color: var(--neutral-90); }
+  *::-webkit-scrollbar { width:10px; height:10px; }
+  *::-webkit-scrollbar-thumb { background:var(--neutral-30); border-radius:999px; }
+</style></head>
+<body>
+<div id="dc-root"><div class="sc-host" data-sc-name="Client Portal - standalone"><div data-dc-tpl="3" style="min-height: 100vh; background: var(--surface-ground); font-family: var(--font-body); color: var(--neutral-80);"><header data-dc-tpl="5" style="position: sticky; top: 0px; z-index: 30; background: rgba(247, 248, 250, 0.92); backdrop-filter: saturate(160%) blur(10px); border-bottom: 1px solid var(--neutral-20);">
+  <div data-dc-tpl="6" style="max-width: 1280px; margin: 0px auto; height: 62px; display: flex; align-items: center; gap: 24px; padding: 0px 28px;">
+    <button data-dc-tpl="7" style="display: flex; align-items: center; gap: 11px; background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; cursor: pointer; padding: 0px;">
+      <span data-dc-tpl="8" style="font-family: var(--font-display); font-weight: 800; font-size: 19px; color: var(--neutral-90); letter-spacing: -0.02em;">headfirst<span data-dc-tpl="9" style="color: var(--striive-green-bright);">.</span></span>
+      <span data-dc-tpl="10" style="width: 1px; height: 20px; background: var(--neutral-30);"></span>
+      <span data-dc-tpl="11" style="font-size: 13px; font-weight: 600; color: var(--neutral-60);">Client Portal</span>
+    </button>
+    <nav data-dc-tpl="12" style="display: flex; gap: 2px; margin-left: 6px;">
+      <button data-dc-tpl="13" style="display: inline-flex; align-items: center; height: 62px; padding: 0px 14px; font-size: 13.5px; font-weight: 500; background: none; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor transparent; border-image: initial; cursor: pointer; font-family: inherit; color: var(--neutral-60);">Home</button>
+      <button data-dc-tpl="14" style="display: inline-flex; align-items: center; height: 62px; padding: 0px 14px; font-size: 13.5px; font-weight: 600; background: none; border-top-width: medium; border-right-width: medium; border-bottom: 2px solid var(--striive-green); border-left-width: medium; border-top-style: none; border-right-style: none; border-left-style: none; border-top-color: currentcolor; border-right-color: currentcolor; border-left-color: currentcolor; border-image: initial; cursor: pointer; font-family: inherit; color: var(--striive-green);">Onboarding</button>
+      <button data-dc-tpl="15" style="display: inline-flex; align-items: center; height: 62px; padding: 0px 14px; font-size: 13.5px; font-weight: 500; background: none; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor transparent; border-image: initial; cursor: pointer; font-family: inherit; color: var(--neutral-60);">Readiness</button>
+      <button data-dc-tpl="16" style="display: inline-flex; align-items: center; height: 62px; padding: 0px 14px; font-size: 13.5px; font-weight: 500; background: none; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor transparent; border-image: initial; cursor: pointer; font-family: inherit; color: var(--neutral-60);">Implementation</button>
+    </nav>
+    <span data-dc-tpl="17" style="flex: 1 1 0%;"></span>
+    <div data-dc-tpl="18" style="position: relative;">
+      <button data-dc-tpl="19" class="scp0" style="display: flex; align-items: center; gap: 10px; background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; cursor: pointer; padding: 5px 6px 5px 10px; border-radius: var(--radius-pill); font-family: inherit;">
+        <span data-dc-tpl="20" style="font-size: 13px; color: var(--neutral-80); font-weight: 500;"><span class="sc-interp">Lotte Mulder</span></span>
+        <span data-dc-tpl="21" style="width: 34px; height: 34px; border-radius: 50%; background: var(--striive-green-soft); color: var(--striive-green); font-family: var(--font-display); font-weight: 700; font-size: 13px; display: grid; place-items: center;"><span class="sc-interp">LM</span></span>
+        <span data-dc-tpl="22" style="font-size: 13px; color: var(--neutral-60); display: inline-block; transition: transform 0.15s; margin-left: -2px;">⌄</span>
+      </button>
+      
+    </div>
+  </div></header><div data-dc-tpl="176" style="max-width: 1180px; margin: 0px auto; padding: 26px 28px 40px; animation: cpFade .3s var(--ease-out);">
+  <button data-dc-tpl="177" style="font-size: 13px; color: var(--neutral-60); background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; cursor: pointer; padding: 0px; margin-bottom: 14px;">← Onboarding overview</button>
+  <div data-dc-tpl="178" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 22px; flex-wrap: wrap;">
+    <div data-dc-tpl="179">
+      <h1 data-dc-tpl="180" style="font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--neutral-90); margin: 0px 0px 4px;">Client Onboarding Data Form</h1>
+      <p data-dc-tpl="181" style="font-size: 14px; color: var(--neutral-60); margin: 0px;">Liander N.V. · saved automatically as you go</p>
+    </div>
+    <span data-dc-tpl="182" style="font-size: 12.5px; color: var(--neutral-60); display: flex; align-items: center; gap: 7px;"><span data-dc-tpl="183" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-success);"></span> All changes saved</span>
+  </div>
+
+  
+  <div data-dc-tpl="184" style="background: var(--surface-card); border: 1px solid var(--neutral-20); border-radius: var(--radius-lg); box-shadow: var(--shadow-xs); padding: 20px 24px; margin-bottom: 18px;">
+    <span data-dc-tpl="185" style="display: block; font-size: 14.5px; font-weight: 600; color: var(--neutral-90); margin-bottom: 12px;">Does your organisation operate through multiple legal entities? <span data-dc-tpl="186" style="color: var(--color-danger);">*</span></span>
+    <div data-dc-tpl="187" style="display: flex; gap: 10px; max-width: 520px;">
+      <button data-dc-tpl="188" style="flex: 1 1 0%; height: 46px; border-radius: var(--radius-md); font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; background: var(--striive-green-soft); border: 1.5px solid var(--striive-green); color: var(--striive-green);">Yes — we have several</button>
+      <button data-dc-tpl="189" style="flex: 1 1 0%; height: 46px; border-radius: var(--radius-md); font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; background: rgb(255, 255, 255); border: 1px solid var(--neutral-30); color: var(--neutral-80);">No — a single entity</button>
+    </div>
+    <p data-dc-tpl="191" style="font-size: 12.5px; color: var(--neutral-60); margin: 12px 0px 0px; line-height: 1.45;">Add each legal entity below. For every entity you'll complete all four sections — company &amp; legal details, billing, tax and organisational hierarchy.</p>
+  </div>
+
+  
+  
+    <div data-dc-tpl="193" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;">
+      <span data-dc-tpl="194" style="font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--neutral-60); margin-right: 2px;">Legal entity</span>
+      
+        <button data-dc-tpl="196" style="display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0px 15px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; background: rgb(255, 255, 255); color: var(--neutral-80); border: 1px solid var(--neutral-30);"><span data-dc-tpl="197" style="width: 18px; height: 18px; border-radius: 50%; font-size: 11px; font-weight: 700; display: grid; place-items: center; flex: 0 0 auto; background: var(--neutral-10); color: var(--neutral-60);"><span class="sc-interp">1</span></span><span class="sc-interp">Liander N.V.</span></button>
+      
+        <button data-dc-tpl="196" style="display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0px 15px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; background: var(--striive-green); color: rgb(255, 255, 255); border: 1px solid var(--striive-green);"><span data-dc-tpl="197" style="width: 18px; height: 18px; border-radius: 50%; font-size: 11px; font-weight: 700; display: grid; place-items: center; flex: 0 0 auto; background: rgba(255, 255, 255, 0.25); color: rgb(255, 255, 255);"><span class="sc-interp">2</span></span><span class="sc-interp">Legal entity 2</span></button>
+      
+      <button data-dc-tpl="198" class="scp7" style="display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0px 16px; border: 1.5px dashed var(--neutral-30); background: none; border-radius: var(--radius-pill); color: var(--striive-green); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer;">+ Add new legal entity</button>
+    </div>
+  
+
+  <div data-dc-tpl="199" style="display: grid; grid-template-columns: 236px 1fr; gap: 26px; align-items: start;">
+    
+    <nav data-dc-tpl="200" style="position: sticky; top: 80px; display: flex; flex-direction: column; gap: 4px;">
+      <button data-dc-tpl="201" style="display: flex; align-items: center; gap: 9px; text-align: left; padding: 11px 13px; border-radius: var(--radius-sm); font-size: 13.5px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; cursor: pointer; font-family: inherit; width: 100%; background: var(--striive-green-soft); color: var(--striive-green); font-weight: 600;"><span data-dc-tpl="202" style="width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--neutral-30); flex: 0 0 auto;"><span class="sc-interp"></span></span>Company &amp; legal entities</button>
+      <button data-dc-tpl="203" style="display: flex; align-items: center; gap: 9px; text-align: left; padding: 11px 13px; border-radius: var(--radius-sm); font-size: 13.5px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; cursor: pointer; font-family: inherit; width: 100%; background: none; color: var(--neutral-80); font-weight: 500;"><span data-dc-tpl="204" style="width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--neutral-30); flex: 0 0 auto;"><span class="sc-interp"></span></span>Billing structures</button>
+      <button data-dc-tpl="205" style="display: flex; align-items: center; gap: 9px; text-align: left; padding: 11px 13px; border-radius: var(--radius-sm); font-size: 13.5px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; cursor: pointer; font-family: inherit; width: 100%; background: none; color: var(--neutral-80); font-weight: 500;"><span data-dc-tpl="206" style="width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--neutral-30); flex: 0 0 auto;"><span class="sc-interp"></span></span>Tax information</button>
+      <button data-dc-tpl="207" style="display: flex; align-items: center; gap: 9px; text-align: left; padding: 11px 13px; border-radius: var(--radius-sm); font-size: 13.5px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; cursor: pointer; font-family: inherit; width: 100%; background: none; color: var(--neutral-80); font-weight: 500;"><span data-dc-tpl="208" style="width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--neutral-30); flex: 0 0 auto;"><span class="sc-interp"></span></span>Organisational hierarchy</button>
+      <div data-dc-tpl="209" style="margin-top: 18px; padding: 14px; background: var(--striive-green-soft); border-radius: var(--radius-md);">
+        <div data-dc-tpl="210" style="font-size: 12px; font-weight: 700; color: var(--striive-green); margin-bottom: 5px;">Completion gate</div>
+        <div data-dc-tpl="211" style="font-size: 12px; color: var(--neutral-70,#3A3731); line-height: 1.45;">Readiness unlocks once every mandatory field is valid.</div>
+      </div>
+    </nav>
+
+    
+    <div data-dc-tpl="212" style="background: var(--surface-card); border: 1px solid var(--neutral-20); border-radius: var(--radius-lg); box-shadow: var(--shadow-xs); padding: 28px 30px 30px;">
+      <div data-dc-tpl="214" style="font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--striive-green); margin-bottom: 8px;"><span class="sc-interp">Legal entity 2</span></div>
+      <div data-dc-tpl="215" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+        <h2 data-dc-tpl="216" style="font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--neutral-90); margin: 0px;"><span class="sc-interp">Company &amp; legal entities</span></h2>
+        <span data-dc-tpl="217" style="font-size: 12px; color: var(--neutral-60); white-space: nowrap;"><span class="sc-interp">Section 1 of 4</span></span>
+      </div>
+      <p data-dc-tpl="218" style="font-size: 13.5px; color: var(--neutral-60); margin: 0px 0px 22px; line-height: 1.45;"><span class="sc-interp">Confirm the details we hold and capture each registered legal entity that takes part in the programme.</span></p>
+
+      
+      
+        
+        
+
+        <div data-dc-tpl="231" style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 18px 22px;">
+          <div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Registered legal name of the entity</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Trading / brand name (if different)</span></span>
+    
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Legal classification</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+  
+    <select data-dc-tpl="15" class="scp2" style="height: 42px; padding: 0px 36px 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card) url(&#39;data:image/svg+xml; font-size: 14px; font-family: inherit; color: var(--neutral-90); outline: none; width: 100%; appearance: none; cursor: pointer;">
+      <option data-dc-tpl="16" value="">Select…</option>
+      <option data-dc-tpl="18" value="Limited Liability Company (Ltd / LLC)"><span class="sc-interp">Limited Liability Company (Ltd / LLC)</span></option><option data-dc-tpl="18" value="Public Limited Company (PLC)" selected=""><span class="sc-interp">Public Limited Company (PLC)</span></option><option data-dc-tpl="18" value="Private Company (non-listed)"><span class="sc-interp">Private Company (non-listed)</span></option><option data-dc-tpl="18" value="Partnership"><span class="sc-interp">Partnership</span></option><option data-dc-tpl="18" value="Limited Liability Partnership (LLP)"><span class="sc-interp">Limited Liability Partnership (LLP)</span></option><option data-dc-tpl="18" value="Sole Trader / Sole Proprietor"><span class="sc-interp">Sole Trader / Sole Proprietor</span></option><option data-dc-tpl="18" value="Non-Profit / Charity"><span class="sc-interp">Non-Profit / Charity</span></option><option data-dc-tpl="18" value="Government / Public Sector Entity"><span class="sc-interp">Government / Public Sector Entity</span></option>
+    </select>
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Company registration number</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  <span data-dc-tpl="22" style="font-size: 11.5px; color: var(--neutral-60); line-height: 1.35;"><span class="sc-interp">KvK number</span></span></div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Country of incorporation</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+  
+    <select data-dc-tpl="15" class="scp2" style="height: 42px; padding: 0px 36px 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card) url(&#39;data:image/svg+xml; font-size: 14px; font-family: inherit; color: var(--neutral-90); outline: none; width: 100%; appearance: none; cursor: pointer;">
+      <option data-dc-tpl="16" value="">Select…</option>
+      <option data-dc-tpl="18" value="Netherlands (NL)" selected=""><span class="sc-interp">Netherlands (NL)</span></option><option data-dc-tpl="18" value="Belgium (BE)"><span class="sc-interp">Belgium (BE)</span></option><option data-dc-tpl="18" value="Germany (DE)"><span class="sc-interp">Germany (DE)</span></option><option data-dc-tpl="18" value="United Kingdom (GB)"><span class="sc-interp">United Kingdom (GB)</span></option><option data-dc-tpl="18" value="France (FR)"><span class="sc-interp">France (FR)</span></option><option data-dc-tpl="18" value="United States (US)"><span class="sc-interp">United States (US)</span></option><option data-dc-tpl="18" value="Ireland (IE)"><span class="sc-interp">Ireland (IE)</span></option><option data-dc-tpl="18" value="Spain (ES)"><span class="sc-interp">Spain (ES)</span></option>
+    </select>
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Industry / sector</span></span>
+    
+    
+    
+  </div>
+  
+  
+    <select data-dc-tpl="15" class="scp2" style="height: 42px; padding: 0px 36px 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card) url(&#39;data:image/svg+xml; font-size: 14px; font-family: inherit; color: var(--neutral-90); outline: none; width: 100%; appearance: none; cursor: pointer;">
+      <option data-dc-tpl="16" value="">Select…</option>
+      <option data-dc-tpl="18" value="Energy &amp; Utilities" selected=""><span class="sc-interp">Energy &amp; Utilities</span></option><option data-dc-tpl="18" value="Financial Services"><span class="sc-interp">Financial Services</span></option><option data-dc-tpl="18" value="Technology"><span class="sc-interp">Technology</span></option><option data-dc-tpl="18" value="Manufacturing"><span class="sc-interp">Manufacturing</span></option><option data-dc-tpl="18" value="Healthcare"><span class="sc-interp">Healthcare</span></option><option data-dc-tpl="18" value="Public Sector"><span class="sc-interp">Public Sector</span></option><option data-dc-tpl="18" value="Retail"><span class="sc-interp">Retail</span></option><option data-dc-tpl="18" value="Telecommunications"><span class="sc-interp">Telecommunications</span></option>
+    </select>
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Primary operating region</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+  
+    <select data-dc-tpl="15" class="scp2" style="height: 42px; padding: 0px 36px 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card) url(&#39;data:image/svg+xml; font-size: 14px; font-family: inherit; color: var(--neutral-90); outline: none; width: 100%; appearance: none; cursor: pointer;">
+      <option data-dc-tpl="16" value="">Select…</option>
+      <option data-dc-tpl="18" value="Europe" selected=""><span class="sc-interp">Europe</span></option><option data-dc-tpl="18" value="North America"><span class="sc-interp">North America</span></option><option data-dc-tpl="18" value="APAC"><span class="sc-interp">APAC</span></option><option data-dc-tpl="18" value="LATAM"><span class="sc-interp">LATAM</span></option><option data-dc-tpl="18" value="Middle East &amp; Africa"><span class="sc-interp">Middle East &amp; Africa</span></option>
+    </select>
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Registered address — line 1</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Registered address — line 2</span></span>
+    
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="Optional" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Town or city</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">State, province or county</span></span>
+    
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Postal / ZIP code</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Country</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+  
+    <select data-dc-tpl="15" class="scp2" style="height: 42px; padding: 0px 36px 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card) url(&#39;data:image/svg+xml; font-size: 14px; font-family: inherit; color: var(--neutral-90); outline: none; width: 100%; appearance: none; cursor: pointer;">
+      <option data-dc-tpl="16" value="">Select…</option>
+      <option data-dc-tpl="18" value="Netherlands (NL)" selected=""><span class="sc-interp">Netherlands (NL)</span></option><option data-dc-tpl="18" value="Belgium (BE)"><span class="sc-interp">Belgium (BE)</span></option><option data-dc-tpl="18" value="Germany (DE)"><span class="sc-interp">Germany (DE)</span></option><option data-dc-tpl="18" value="United Kingdom (GB)"><span class="sc-interp">United Kingdom (GB)</span></option><option data-dc-tpl="18" value="France (FR)"><span class="sc-interp">France (FR)</span></option><option data-dc-tpl="18" value="United States (US)"><span class="sc-interp">United States (US)</span></option><option data-dc-tpl="18" value="Ireland (IE)"><span class="sc-interp">Ireland (IE)</span></option><option data-dc-tpl="18" value="Spain (ES)"><span class="sc-interp">Spain (ES)</span></option>
+    </select>
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Is this an active legal entity?</span></span>
+    <span data-dc-tpl="4" style="color: var(--color-danger); font-weight: 700; font-size: 13px;">*</span>
+    
+    
+  </div>
+  
+  
+    <select data-dc-tpl="15" class="scp2" style="height: 42px; padding: 0px 36px 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card) url(&#39;data:image/svg+xml; font-size: 14px; font-family: inherit; color: var(--neutral-90); outline: none; width: 100%; appearance: none; cursor: pointer;">
+      <option data-dc-tpl="16" value="" selected="">Select…</option>
+      <option data-dc-tpl="18" value="Active"><span class="sc-interp">Active</span></option><option data-dc-tpl="18" value="Inactive"><span class="sc-interp">Inactive</span></option><option data-dc-tpl="18" value="Pending go-live"><span class="sc-interp">Pending go-live</span></option>
+    </select>
+  
+  
+  </div></div></div><div data-dc-tpl="233"><div class="sc-host" data-sc-name="Field" data-dc-tpl="234"><div data-dc-tpl="0" style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+  <div data-dc-tpl="1" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-height: 18px;">
+    <span data-dc-tpl="2" style="font-size: 12.5px; font-weight: 600; color: var(--neutral-80); line-height: 1.3;"><span class="sc-interp">Planned go-live date in the programme</span></span>
+    
+    
+    
+  </div>
+  
+    <div data-dc-tpl="10" style="position: relative; display: flex; align-items: center;">
+      
+      <input data-dc-tpl="13" type="text" placeholder="DD/MM/YYYY" class="scp2" value="" style="height: 42px; padding: 0px 13px; border: 1px solid var(--neutral-30); border-radius: var(--radius-sm); background: var(--surface-card); font-size: 14px; color: var(--neutral-90); outline: none; width: 100%; font-family: inherit;">
+    </div>
+  
+  
+  
+  </div></div></div>
+        </div>
+      
+
+      
+      
+
+      
+      
+
+      
+      
+
+      
+        <div data-dc-tpl="251" style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--neutral-10);">
+          <button data-dc-tpl="252" class="scp1" style="height: 36px; padding: 0px 14px; background: none; color: var(--color-danger); border: 1px solid color-mix(in srgb,var(--color-danger) 35%,transparent); border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer;">Remove this legal entity</button>
+        </div>
+      
+
+      
+      <div data-dc-tpl="253" style="display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--neutral-10);">
+        <button data-dc-tpl="254" style="height: 44px; padding: 0px 18px; background: none; color: var(--neutral-60); border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer;">Save &amp; exit</button>
+        <button data-dc-tpl="255" class="scp3" style="height: 44px; padding: 0px 24px; background: var(--striive-green); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer;"><span class="sc-interp">Save &amp; continue</span> →</button>
+      </div>
+    </div>
+  </div></div><div data-dc-tpl="432" style="position: fixed; inset: 0px; z-index: 60; background: rgba(29, 29, 27, 0.5); display: flex; align-items: center; justify-content: center; padding: 24px; animation: cpFade .18s var(--ease-out);">
+
+  
+
+  
+  <div data-dc-tpl="470" style="background: rgb(255, 255, 255); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); width: 100%; max-width: 440px; overflow: hidden;">
+    <div data-dc-tpl="471" style="padding: 24px 24px 20px;">
+      <div data-dc-tpl="472" style="display: flex; align-items: center; gap: 13px; margin-bottom: 14px;">
+        <span data-dc-tpl="473" style="width: 42px; height: 42px; border-radius: 50%; background: var(--color-danger-soft); color: var(--color-danger); display: grid; place-items: center; flex: 0 0 auto;"><svg data-dc-tpl="474" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path data-dc-tpl="475" d="M3 6h18"></path><path data-dc-tpl="476" d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></span>
+        <h2 data-dc-tpl="477" style="font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--neutral-90); margin: 0px;">Delete <span class="sc-interp">Legal entity 2</span>?</h2>
+      </div>
+      <p data-dc-tpl="478" style="font-size: 13.5px; color: var(--neutral-70,#3A3731); line-height: 1.5; margin: 0px;">Are you sure you want to delete this legal entity? All company, billing, tax and organisational data captured for it will be removed. This can't be undone.</p>
+    </div>
+    <div data-dc-tpl="479" style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 0px 24px 22px;">
+      <button data-dc-tpl="480" style="height: 42px; padding: 0px 18px; background: rgb(255, 255, 255); color: var(--neutral-80); border: 1px solid var(--neutral-30); border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer;">Cancel</button>
+      <button data-dc-tpl="481" class="scpd" style="height: 42px; padding: 0px 20px; background: var(--color-danger); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer;">Delete entity</button>
+    </div>
+  </div>
+  
+
+  
+
+  
+
+  </div></div></div></div>
+
+<script type="text/x-dc" data-dc-script="" data-props="{}">
+class Component extends DCLogic {
+  state = {
+    screen: 'login',
+    multiEntity: 'yes',
+    entities: [{ id: 1 }],
+    openEnt: 1,
+    obSection: 'company',
+    confirmed: false,
+    entityDone: { 1: { company: false, billing: false, tax: false, org: false } },
+    rdType: 'supplier',
+    records: { supplier: [1, 2], worker: [3, 4], assignment: [5], ratecard: [6] },
+    openRec: { supplier: null, worker: null, assignment: null, ratecard: null },
+    recData: {
+      supplier: {
+        1: { name: 'Bright Recruitment Ltd', country: 'United Kingdom (GB)', supType: 'Agency', _mod: '10 Jun 2026' },
+        2: { name: 'Randstad Nederland', country: 'Netherlands (NL)', supType: 'Managed Service Provider', _mod: '8 Jun 2026' },
+      },
+      worker: {
+        3: { first: 'Sven', last: 'de Boer', status: 'On assignment', _mod: '11 Jun 2026' },
+        4: { first: 'Fatima', last: 'El Amrani', status: 'Onboarding', _mod: '9 Jun 2026' },
+      },
+      assignment: {
+        5: { jobTitle: 'Senior Grid Engineer', entity: 'Liander N.V.', status: 'Active', _mod: '7 Jun 2026' },
+      },
+      ratecard: {
+        6: { rname: 'IT Contractor — Senior', rtype: 'Hourly', currency: 'EUR (€)', entity: 'Liander N.V.', _mod: '5 Jun 2026' },
+      },
+    },
+    rdSortCol: null,
+    rdSortDir: 'asc',
+    nextId: 100,
+    modal: null,
+    deleteEntityId: null,
+    userMenu: false,
+    profileEdit: false,
+    profile: { first: 'Lotte', last: 'Mulder', email: 'lotte.mulder@liander.nl', org: 'Liander N.V.', role: 'Key contact · Procurement', phone: '+31 6 1234 5678' },
+    profileDraft: null,
+    scopeValidated: false,
+    contacts: [
+      { first: 'Lotte', last: 'Mulder', role: 'Key contact · Procurement', initials: 'LM', accent: true },
+      { first: 'Pieter', last: 'Maas', role: 'Finance · Billing & tax', initials: 'PM' },
+    ],
+    inviteForm: { first: '', last: '', email: '', dept: '', country: '' },
+  };
+
+  OPT = {
+    yesno: ['Yes', 'No'],
+    legalClass: ['Limited Liability Company (Ltd / LLC)', 'Public Limited Company (PLC)', 'Private Company (non-listed)', 'Partnership', 'Limited Liability Partnership (LLP)', 'Sole Trader / Sole Proprietor', 'Non-Profit / Charity', 'Government / Public Sector Entity'],
+    country: ['Netherlands (NL)', 'Belgium (BE)', 'Germany (DE)', 'United Kingdom (GB)', 'France (FR)', 'United States (US)', 'Ireland (IE)', 'Spain (ES)'],
+    region: ['Europe', 'North America', 'APAC', 'LATAM', 'Middle East & Africa'],
+    industry: ['Energy & Utilities', 'Financial Services', 'Technology', 'Manufacturing', 'Healthcare', 'Public Sector', 'Retail', 'Telecommunications'],
+    activeEntity: ['Active', 'Inactive', 'Pending go-live'],
+    taxType: ['VAT', 'GST', 'Sales Tax', 'None'],
+    unitType: ['Division', 'Business Unit', 'Department', 'Team', 'Cost Centre'],
+    siteType: ['Head Office (HQ)', 'Regional Office', 'Local / Branch Office', 'Delivery / Operational Site', 'Warehouse / Distribution Centre', 'Retail Location', 'Project / Temporary Site'],
+    nlProvince: ['Gelderland', 'Noord-Holland', 'Zuid-Holland', 'Utrecht', 'Noord-Brabant', 'Overijssel', 'Flevoland', 'Limburg'],
+    leList: ['Liander N.V.', 'Alliander N.V.', 'Qirion B.V.'],
+    supplierType: ['Agency', 'Umbrella Company', 'Limited Company', 'Sole Trader', 'Consultancy / SOW', 'Managed Service Provider'],
+    currency: ['EUR (€)', 'GBP (£)', 'USD ($)', 'CHF', 'SEK'],
+    paymentTerms: ['From invoice date', 'End of month following invoice', 'End of month', 'On receipt', 'Net terms'],
+    contractType: ['Framework', 'Direct', 'SOW (Statement of Work)', 'Preferred Supplier Agreement'],
+    tier: ['Tier 1', 'Tier 2', 'Tier 3'],
+    diversity: ['None', 'Women-owned', 'Minority-owned', 'Veteran-owned', 'Disability-owned', 'SME'],
+    compliance: ['Verified', 'Pending', 'Expired', 'Not provided'],
+    nda: ['Signed', 'Pending', 'Not required'],
+    gender: ['Female', 'Male', 'Non-binary', 'Prefer not to say'],
+    engagementType: ['PAYE', 'Limited Company (PSC)', 'Umbrella', 'Sole Trader', 'Agency Worker'],
+    payrollClass: ['Inside IR35', 'Outside IR35', 'PAYE', 'Self-employed'],
+    ir35: ['Inside IR35', 'Outside IR35', 'Not applicable'],
+    rtwStatus: ['Verified', 'Pending', 'Expired'],
+    rtwDoc: ['Passport', 'Right to Work share code', 'Biometric Residence Permit', 'National ID'],
+    workerStatus: ['Active', 'Onboarding', 'On assignment', 'Ended'],
+    roleCategory: ['IT & Engineering', 'Finance', 'Operations', 'Marketing', 'HR', 'Legal', 'Project Management'],
+    assignmentType: ['Temporary', 'Contract', 'Fixed-term', 'Permanent', 'SOW'],
+    assignmentStatus: ['Draft', 'Pending approval', 'Active', 'Completed'],
+    shiftPattern: ['Standard (Mon–Fri)', 'Shift / rotating', 'Weekend', 'Nights', 'Flexible'],
+    overtimeRules: ['No overtime', '1.5x after 40h', '2x weekends', 'Time off in lieu'],
+    rateType: ['Hourly', 'Daily', 'Fixed', 'Annualised'],
+    rateUnit: ['Per hour', 'Per day', 'Per week', 'Per project'],
+    supplierList: ['Bright Recruitment Ltd', 'Randstad Nederland', 'YER B.V.', 'Brunel'],
+    workerList: ['Sven de Boer', 'Fatima El Amrani'],
+    ratecardList: ['IT Contractor — Senior', 'Engineering Lead — Premium'],
+  };
+
+  LE = [
+    { l: 'Registered legal name of the entity', m: 1, pre: 'Liander N.V.' },
+    { l: 'Trading / brand name (if different)', pre: 'Liander' },
+    { l: 'Legal classification', k: 'sel', o: 'legalClass', m: 1, pre: 'Public Limited Company (PLC)' },
+    { l: 'Company registration number', m: 1, pre: '09104351', h: 'KvK number' },
+    { l: 'Country of incorporation', k: 'sel', o: 'country', m: 1, pre: 'Netherlands (NL)' },
+    { l: 'Industry / sector', k: 'sel', o: 'industry', pre: 'Energy & Utilities' },
+    { l: 'Primary operating region', k: 'sel', o: 'region', m: 1, pre: 'Europe' },
+    { l: 'Registered address — line 1', m: 1, pre: 'Utrechtseweg 68' },
+    { l: 'Registered address — line 2', p: 'Optional' },
+    { l: 'Town or city', m: 1, pre: 'Arnhem' },
+    { l: 'State, province or county', pre: 'Gelderland' },
+    { l: 'Postal / ZIP code', m: 1, pre: '6812 AH' },
+    { l: 'Country', k: 'sel', o: 'country', m: 1, pre: 'Netherlands (NL)' },
+    { l: 'Is this an active legal entity?', k: 'sel', o: 'activeEntity', m: 1 },
+    { l: 'Planned go-live date in the programme', p: 'DD/MM/YYYY' },
+  ];
+  BILL = [
+    { l: 'Main billing / AP contact — first and last name', m: 1, pre: 'Pieter Maas' },
+    { l: 'Billing contact email address', t: 'email', m: 1, pre: 'p.maas@liander.nl' },
+    { l: 'Email address invoices should be sent to', t: 'email', pre: 'facturen@liander.nl' },
+    { l: 'Billing address — line 1', m: 1, pre: 'Utrechtseweg 68' },
+    { l: 'Billing address — line 2', p: 'Optional' },
+    { l: 'Billing town/city and postal code', m: 1, pre: 'Arnhem, 6812 AH' },
+    { l: 'Invoice approver — first and last name', m: 1 },
+    { l: 'Invoice approver — email address', t: 'email', m: 1 },
+  ];
+  TAX = [
+    { l: 'Tax registration ID', m: 1, pre: 'NL8091.55.740' },
+    { l: 'Legal entity this tax registration is under', k: 'sel', o: 'leList', m: 1, pre: 'Liander N.V.' },
+    { l: 'Is tax charged on this entity\u2019s invoices?', k: 'sel', o: 'yesno', m: 1, pre: 'Yes' },
+    { l: 'What type of tax applies?', k: 'sel', o: 'taxType', m: 1, pre: 'VAT' },
+    { l: 'Tax / VAT registration number', m: 1, pre: 'NL809155740B01' },
+    { l: 'Country this tax registration applies to', k: 'sel', o: 'country', m: 1, pre: 'Netherlands (NL)' },
+    { l: 'Tax jurisdiction or state (if relevant)' },
+    { l: 'Standard tax rate that applies', t: 'number', m: 1, pre: '21', h: 'Percentage (%)' },
+    { l: 'Tax label to appear on the invoice', pre: 'BTW' },
+    { l: 'Tax code used on transactions' },
+    { l: 'Do reverse-charge rules apply?', k: 'sel', o: 'yesno' },
+    { l: 'Country of tax residency', k: 'sel', o: 'country' },
+    { l: 'Tax registration valid from (for invoicing)', p: 'DD/MM/YYYY' },
+  ];
+  ORG = [
+    { l: 'Your reference code for this organisational unit', m: 1, pre: 'LIA-GRID-OPS' },
+    { l: 'Name of this business unit / department', m: 1, pre: 'Grid Operations' },
+    { l: 'How would you describe what this unit does?', k: 'ta', p: 'Optional' },
+    { l: 'What type of unit is this?', k: 'sel', o: 'unitType', m: 1 },
+    { l: 'Which higher-level unit does this sit under?' },
+    { l: 'Which legal entity does this unit belong to?', k: 'sel', o: 'leList', m: 1, pre: 'Liander N.V.' },
+    { l: 'Associated cost centre (if any)' },
+    { l: 'Country or region this unit operates in', k: 'sel', o: 'country', pre: 'Netherlands (NL)' },
+    { l: 'Name of this location or office', pre: 'Arnhem HQ' },
+    { l: 'What type of site is this?', k: 'sel', o: 'siteType', m: 1 },
+    { l: 'Site address — line 1', m: 1, pre: 'Utrechtseweg 68' },
+    { l: 'Site address — line 2', p: 'Optional' },
+    { l: 'Town or city of the site', m: 1, pre: 'Arnhem' },
+    { l: 'State or province of the site', k: 'sel', o: 'nlProvince', pre: 'Gelderland' },
+    { l: 'Site postal / ZIP code', m: 1, pre: '6812 AH' },
+    { l: 'Country of the site', k: 'sel', o: 'country', m: 1, pre: 'Netherlands (NL)' },
+    { l: 'Region of the site', k: 'sel', o: 'region', m: 1, pre: 'Europe' },
+    { l: 'Who\u2019s responsible for this unit? (name and/or role)' },
+    { l: 'Contact email for the person responsible', t: 'email' },
+    { l: 'Who owns this unit\u2019s budget?' },
+    { l: 'Is this unit currently active?', k: 'sel', o: 'yesno', m: 1, pre: 'Yes' },
+  ];
+
+  RD = {
+    supplier: {
+      singular: 'supplier', plural: 'suppliers', title: 'Suppliers', icon: '\u{1F3E2}',
+      desc: 'Capture each supplier providing workers to your programme — their identity, contacts, banking and commercial terms.',
+      addLabel: 'Add supplier',
+      groups: [
+        { name: 'Identity', fields: [
+          { l: 'Legal name of the supplier', m: 1, key: 'name' }, { l: 'Different trading name (if any)' },
+          { l: 'Company registration number', m: 1 }, { l: 'Tax registration number (VAT / GST)', m: 1 },
+          { l: 'Type of supplier', k: 'sel', o: 'supplierType', m: 1, key: 'supType' },
+          { l: 'Country', k: 'sel', o: 'country', m: 1, key: 'country' }, { l: 'Registered address', k: 'ta', m: 1 },
+        ]},
+        { name: 'Contact & banking', fields: [
+          { l: 'Email address for invoicing', t: 'email' }, { l: 'Main contact name', m: 1 },
+          { l: 'Main contact email', t: 'email', m: 1 }, { l: 'Main contact phone', t: 'tel' },
+          { l: 'Name on the bank account', m: 1 }, { l: 'Bank name', m: 1 },
+          { l: 'Bank account number', m: 1 }, { l: 'Sort code / routing number', m: 1 },
+          { l: 'IBAN (if applicable)' }, { l: 'SWIFT / BIC code (if applicable)' },
+        ]},
+        { name: 'Commercial terms', fields: [
+          { l: 'Payment currency', k: 'sel', o: 'currency', m: 1 }, { l: 'Payment terms', k: 'sel', o: 'paymentTerms', m: 1 },
+          { l: 'Days after invoice the supplier is paid', t: 'number', m: 1 }, { l: 'Contract start date', m: 1, p: 'DD/MM/YYYY' },
+          { l: 'Contract end date (if applicable)', p: 'DD/MM/YYYY' }, { l: 'Contract type', k: 'sel', o: 'contractType' },
+          { l: 'Preferred supplier?', k: 'sel', o: 'yesno' }, { l: 'Supplier tier', k: 'sel', o: 'tier' },
+          { l: 'Diversity classification', k: 'sel', o: 'diversity' }, { l: 'Insurance / compliance status', k: 'sel', o: 'compliance' },
+          { l: 'NDA status', k: 'sel', o: 'nda' },
+        ]},
+      ],
+    },
+    worker: {
+      singular: 'worker', plural: 'workers', title: 'Workers', icon: '\u{1F464}',
+      desc: 'Capture each worker engaged on your programme — personal details, engagement model and right-to-work.',
+      addLabel: 'Add worker',
+      groups: [
+        { name: 'Personal details', fields: [
+          { l: 'First name', m: 1, key: 'first' }, { l: 'Surname', m: 1, key: 'last' }, { l: 'Preferred name (if any)' },
+          { l: 'Date of birth', m: 1, p: 'DD/MM/YYYY' }, { l: 'Gender (if collected)', k: 'sel', o: 'gender' },
+          { l: 'Nationality', k: 'sel', o: 'country' }, { l: 'Email address', t: 'email', m: 1 },
+          { l: 'Phone number', t: 'tel' }, { l: 'Home address', k: 'ta' },
+        ]},
+        { name: 'Engagement', fields: [
+          { l: 'National ID (NI / SSN)', m: 1 }, { l: 'Type of engagement', k: 'sel', o: 'engagementType', m: 1 },
+          { l: 'Payroll classification', k: 'sel', o: 'payrollClass' }, { l: 'Supplier engaged through', k: 'sel', o: 'supplierList', m: 1 },
+          { l: 'IR35 status (if applicable)', k: 'sel', o: 'ir35' }, { l: 'Engaged via a company (Ltd / Umbrella)?', k: 'sel', o: 'yesno' },
+          { l: 'If yes, name of the company' }, { l: 'Current status of this worker', k: 'sel', o: 'workerStatus', m: 1, key: 'status' },
+          { l: 'Date first started engagement', p: 'DD/MM/YYYY' },
+        ]},
+        { name: 'Right to work', fields: [
+          { l: 'Right-to-work status', k: 'sel', o: 'rtwStatus', m: 1 }, { l: 'Document used to confirm right to work', k: 'sel', o: 'rtwDoc' },
+        ]},
+      ],
+    },
+    assignment: {
+      singular: 'assignment', plural: 'assignments', title: 'Assignment structures', icon: '\u{1F4CB}',
+      desc: 'Define each assignment — who is doing what, where, for how long, charged to which entity and rate card.',
+      addLabel: 'Add assignment',
+      groups: [
+        { name: 'Role', fields: [
+          { l: 'Job or work-order reference' }, { l: 'Which worker is assigned?', k: 'sel', o: 'workerList', m: 1 },
+          { l: 'Which supplier provides this worker?', k: 'sel', o: 'supplierList', m: 1 }, { l: 'Which legal entity is this work for?', k: 'sel', o: 'leList', m: 1, key: 'entity' },
+          { l: 'Job title for this assignment', m: 1, key: 'jobTitle' }, { l: 'Role category', k: 'sel', o: 'roleCategory' },
+          { l: 'Type of assignment', k: 'sel', o: 'assignmentType', m: 1 }, { l: 'Current status of the assignment', k: 'sel', o: 'assignmentStatus', m: 1, key: 'status' },
+        ]},
+        { name: 'Cost & location', fields: [
+          { l: 'Cost centre to charge to' }, { l: 'GL code (if applicable)' }, { l: 'WBS code (if applicable)' },
+          { l: 'Where will the work be carried out?', k: 'ta', m: 1 }, { l: 'Worksite location (city / postcode)' },
+          { l: 'Which rate card applies?', k: 'sel', o: 'ratecardList', m: 1 },
+        ]},
+        { name: 'Schedule', fields: [
+          { l: 'Assignment start date', m: 1, p: 'DD/MM/YYYY' }, { l: 'Assignment end date (if known)', p: 'DD/MM/YYYY' },
+          { l: 'Planned duration' }, { l: 'Hours per week', t: 'number' }, { l: 'Hours per day', t: 'number' },
+          { l: 'Days per week', t: 'number' }, { l: 'Work schedule / shift pattern', k: 'sel', o: 'shiftPattern' },
+          { l: 'Overtime rules', k: 'sel', o: 'overtimeRules' },
+        ]},
+        { name: 'Approvals', fields: [
+          { l: 'Hiring manager' }, { l: 'Hiring manager email', t: 'email' },
+          { l: 'Timesheet approver — first and last name' }, { l: 'Timesheet approver email', t: 'email' },
+          { l: 'Tax code that applies' }, { l: 'Expense policy (if any)' },
+        ]},
+      ],
+    },
+    ratecard: {
+      singular: 'rate card', plural: 'rate cards', title: 'Rate cards', icon: '\u{1F4B7}',
+      desc: 'Set the pay, supplier and client rates for each role and location — plus fees, margins and adjustments.',
+      addLabel: 'Add rate card',
+      groups: [
+        { name: 'Scope', fields: [
+          { l: 'Name of this rate card', key: 'rname' }, { l: 'Which legal entity does this apply to?', k: 'sel', o: 'leList', m: 1, key: 'entity' },
+          { l: 'Which role does this apply to?', m: 1 }, { l: 'Job category / level', k: 'sel', o: 'roleCategory' },
+          { l: 'Which location does this apply to?', k: 'sel', o: 'region', m: 1 }, { l: 'Currency', k: 'sel', o: 'currency', m: 1, key: 'currency' },
+          { l: 'Type of rate', k: 'sel', o: 'rateType', m: 1, key: 'rtype' }, { l: 'Unit the rate is based on', k: 'sel', o: 'rateUnit' },
+        ]},
+        { name: 'Rates', fields: [
+          { l: 'Standard pay rate to the worker', t: 'number', prefix: '\u20AC', m: 1 }, { l: 'Overtime pay rate to the worker', t: 'number', prefix: '\u20AC' },
+          { l: 'Rate paid to supplier (standard)', t: 'number', prefix: '\u20AC' }, { l: 'Overtime rate paid to supplier', t: 'number', prefix: '\u20AC' },
+          { l: 'Standard rate charged to client', t: 'number', prefix: '\u20AC', m: 1 }, { l: 'Overtime rate charged to client', t: 'number', prefix: '\u20AC' },
+        ]},
+        { name: 'Adjustments', fields: [
+          { l: 'MSP fee percentage', t: 'number', h: 'Percentage (%)' }, { l: 'Margin or mark-up', t: 'number', h: 'Percentage (%)' },
+          { l: 'Overtime multiplier', t: 'number' }, { l: 'Shift premium (if any)' }, { l: 'Statutory / on-costs' },
+          { l: 'AWR pay rate (if applicable)', t: 'number', prefix: '\u20AC' }, { l: 'Does VAT apply to this rate?', k: 'sel', o: 'yesno' },
+          { l: 'Rate applies from', m: 1, p: 'DD/MM/YYYY' }, { l: 'Rate stops applying (if applicable)', p: 'DD/MM/YYYY' },
+        ]},
+      ],
+    },
+  };
+
+  buildField(d, opts) {
+    opts = opts || {};
+    const k = d.k || 'in';
+    const isSel = k === 'sel', isTa = k === 'ta', isIn = !isSel && !isTa;
+    const hasPre = !!(opts.prefill && d.pre !== undefined);
+    let v = hasPre ? d.pre : '';
+    if (opts.data && d.key && opts.data[d.key] !== undefined) v = opts.data[d.key];
+    const pad = d.prefix ? 28 : 13;
+    const onChange = (opts.setKey && d.key) ? ((e) => opts.setKey(d.key, e.target.value)) : undefined;
+    return {
+      l: d.l, req: !!d.m, isIn, isSel, isTa,
+      t: d.t || 'text', p: d.p || (isSel ? '' : ''),
+      v, o: d.o ? this.OPT[d.o] : [],
+      h: d.h || '', hasHelp: !!d.h,
+      hasPrefix: !!d.prefix, prefix: d.prefix || '',
+      bValidate: hasPre && !this.state.confirmed,
+      bConfirmed: hasPre && this.state.confirmed,
+      wrap: isTa ? 'grid-column:1 / -1' : '',
+      onChange,
+      inStyle: 'height:42px;padding:0 13px 0 ' + pad + 'px;border:1px solid var(--neutral-30);border-radius:var(--radius-sm);background:var(--surface-card);font-size:14px;color:var(--neutral-90);outline:none;width:100%;font-family:inherit;',
+    };
+  }
+
+  nav(active) {
+    const base = 'display:inline-flex;align-items:center;height:62px;padding:0 14px;font-size:13.5px;font-weight:500;background:none;border:none;cursor:pointer;font-family:inherit;';
+    return active ? base + 'color:var(--striive-green);border-bottom:2px solid var(--striive-green);font-weight:600;' : base + 'color:var(--neutral-60);border-bottom:2px solid transparent;';
+  }
+  secNav(active, done) {
+    const base = 'display:flex;align-items:center;gap:9px;text-align:left;padding:11px 13px;border-radius:var(--radius-sm);font-size:13.5px;border:none;cursor:pointer;font-family:inherit;width:100%;';
+    return active
+      ? base + 'background:var(--striive-green-soft);color:var(--striive-green);font-weight:600;'
+      : base + 'background:none;color:var(--neutral-80);font-weight:500;';
+  }
+  tick(done) {
+    return done
+      ? 'width:18px;height:18px;border-radius:50%;background:var(--color-success);color:#fff;font-size:11px;display:grid;place-items:center;flex:0 0 auto;'
+      : 'width:18px;height:18px;border-radius:50%;border:1.5px solid var(--neutral-30);flex:0 0 auto;';
+  }
+  meBtn(on) {
+    const base = 'flex:1;height:46px;border-radius:var(--radius-md);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;';
+    return on
+      ? base + 'background:var(--striive-green-soft);border:1.5px solid var(--striive-green);color:var(--striive-green);'
+      : base + 'background:#fff;border:1px solid var(--neutral-30);color:var(--neutral-80);';
+  }
+  tab(active) {
+    const base = 'display:inline-flex;align-items:center;gap:8px;padding:11px 16px;font-size:13.5px;font-weight:500;background:none;border:none;margin-bottom:-1px;cursor:pointer;font-family:inherit;';
+    return active ? base + 'color:var(--striive-green);border-bottom:2px solid var(--striive-green);font-weight:600;' : base + 'color:var(--neutral-60);border-bottom:2px solid transparent;';
+  }
+  tabBadge(active) {
+    return 'font-size:11px;font-weight:700;min-width:18px;height:18px;padding:0 5px;border-radius:999px;display:inline-grid;place-items:center;' + (active ? 'background:var(--striive-green);color:#fff;' : 'background:var(--neutral-10);color:var(--neutral-60);');
+  }
+
+  go(s) { this.setState({ screen: s }); try { window.scrollTo(0, 0); } catch (e) {} }
+  selSec(s) { this.setState({ obSection: s }); }
+  selType(t) { this.setState({ rdType: t, rdSortCol: null, rdSortDir: 'asc' }); }
+  toggleSort(idx) {
+    this.setState(st => st.rdSortCol === idx
+      ? { rdSortDir: st.rdSortDir === 'asc' ? 'desc' : 'asc' }
+      : { rdSortCol: idx, rdSortDir: 'asc' });
+  }
+  selEntity(id) { this.setState({ openEnt: id, obSection: 'company' }); try { window.scrollTo(0, 0); } catch (e) {} }
+  addEntity() {
+    this.setState(st => {
+      const id = st.nextId;
+      return {
+        entities: [...st.entities, { id }],
+        openEnt: id, obSection: 'company', nextId: id + 1,
+        entityDone: { ...st.entityDone, [id]: { company: false, billing: false, tax: false, org: false } },
+      };
+    });
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+  toggleRec(id) { this.setState(st => ({ openRec: { ...st.openRec, [st.rdType]: st.openRec[st.rdType] === id ? null : id } })); }
+  addRec() {
+    this.setState(st => {
+      const id = st.nextId;
+      const t = st.rdType;
+      const list = [...st.records[t], id];
+      const td = { ...(st.recData[t] || {}) };
+      td[id] = { _mod: 'Just now' };
+      return { records: { ...st.records, [t]: list }, recData: { ...st.recData, [t]: td }, openRec: { ...st.openRec, [t]: id }, nextId: id + 1 };
+    });
+  }
+  removeRec(id) {
+    this.setState(st => {
+      const list = st.records[st.rdType].filter(x => x !== id);
+      return { records: { ...st.records, [st.rdType]: list }, openRec: { ...st.openRec, [st.rdType]: null } };
+    });
+  }
+  saveContinue() {
+    const order = ['company', 'billing', 'tax', 'org'];
+    const st = this.state;
+    const cur = st.obSection;
+    const eid = st.openEnt;
+    const idx = order.indexOf(cur);
+    const entityDone = { ...st.entityDone, [eid]: { ...(st.entityDone[eid] || {}), [cur]: true } };
+    if (idx < order.length - 1) {
+      this.setState({ entityDone, obSection: order[idx + 1] });
+    } else if (st.multiEntity === 'no') {
+      this.setState({ entityDone, screen: 'onboarding' });
+    } else {
+      // multi-entity: this entity is complete — return to its company section so the user can switch or add another
+      this.setState({ entityDone, obSection: 'company' });
+    }
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+
+  setRecData(id, key, val) {
+    this.setState(st => {
+      const t = st.rdType;
+      const td = { ...(st.recData[t] || {}) };
+      td[id] = { ...(td[id] || {}), [key]: val, _mod: 'Just now' };
+      return { recData: { ...st.recData, [t]: td } };
+    });
+  }
+  removeEntity(id) {
+    this.setState(st => {
+      const entities = st.entities.filter(e => e.id !== id);
+      const entityDone = { ...st.entityDone };
+      delete entityDone[id];
+      const openEnt = st.openEnt === id ? (entities[0] && entities[0].id) : st.openEnt;
+      return { entities, entityDone, openEnt, obSection: st.openEnt === id ? 'company' : st.obSection };
+    });
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+  openModal(m) { this.setState({ modal: m }); }
+  closeModal() { this.setState({ modal: null }); }
+  askRemoveEntity(id) { this.setState({ modal: 'confirmEntity', deleteEntityId: id }); }
+  confirmRemoveEntity() {
+    const id = this.state.deleteEntityId;
+    this.setState({ modal: null, deleteEntityId: null });
+    if (id != null) this.removeEntity(id);
+  }
+  setInvite(key, val) { this.setState(st => ({ inviteForm: { ...st.inviteForm, [key]: val } })); }
+  setDraft(key, val) { this.setState(st => ({ profileDraft: { ...(st.profileDraft || st.profile), [key]: val } })); }
+  sendInvite() {
+    const f = this.state.inviteForm;
+    if (!f.first || !f.email) return;
+    const initials = ((f.first[0] || '') + (f.last[0] || '')).toUpperCase();
+    const role = (f.dept || 'Contributor') + (f.country ? ' · ' + f.country.replace(/\s*\(.*\)/, '') : '');
+    const contact = { first: f.first, last: f.last, role, initials };
+    this.setState(st => ({ contacts: [...st.contacts, contact], modal: null, inviteForm: { first: '', last: '', email: '', dept: '', country: '' } }));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const scr = s.screen;
+    const sect = { company: { t: 'Company & legal entities', d: 'Confirm the details we hold and capture each registered legal entity that takes part in the programme.', step: 'Section 1 of 4' }, billing: { t: 'Billing structures', d: 'Tell us who handles invoicing and where invoices should go.', step: 'Section 2 of 4' }, tax: { t: 'Tax information', d: 'Capture the tax registration and rates that apply to this entity.', step: 'Section 3 of 4' }, org: { t: 'Organisational hierarchy', d: 'Describe the business units and sites that make up your organisation.', step: 'Section 4 of 4' } };
+    const cur = sect[s.obSection];
+
+    // --- legal entities (each completes all four sections) ---
+    const eEntities = s.entities;
+    const curIdx = Math.max(0, eEntities.findIndex(e => e.id === s.openEnt));
+    const curId = (eEntities[curIdx] || eEntities[0]).id;
+    const isPrimary = curIdx === 0;
+    const entLabel = (i) => i === 0 ? 'Liander N.V.' : 'Legal entity ' + (i + 1);
+    const entDoneAll = (id) => { const d = s.entityDone[id] || {}; return d.company && d.billing && d.tax && d.org; };
+    const entityTabs = eEntities.map((e, i) => {
+      const active = e.id === curId;
+      const complete = entDoneAll(e.id);
+      return {
+        id: e.id, label: entLabel(i),
+        onSelect: () => this.selEntity(e.id),
+        style: 'display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 15px;border-radius:var(--radius-pill);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;'
+          + (active ? 'background:var(--striive-green);color:#fff;border:1px solid var(--striive-green);' : 'background:#fff;color:var(--neutral-80);border:1px solid var(--neutral-30);'),
+        dot: complete ? '✓' : (i + 1),
+        dotStyle: 'width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700;display:grid;place-items:center;flex:0 0 auto;'
+          + (active ? 'background:rgba(255,255,255,0.25);color:#fff;' : (complete ? 'background:var(--color-success);color:#fff;' : 'background:var(--neutral-10);color:var(--neutral-60);')),
+      };
+    });
+    const curDone = s.entityDone[curId] || { company: false, billing: false, tax: false, org: false };
+    const companyFields = this.LE.map(d => this.buildField(d, { prefill: isPrimary }));
+
+    const rdType = s.rdType;
+    const def = this.RD[rdType];
+    const summarise = (type, dt) => {
+      const j = (arr) => arr.filter(Boolean).join('  ·  ');
+      if (type === 'supplier') return { title: dt.name || 'New supplier', sub: j([dt.country, dt.supType]) || 'Add supplier details to validate', filled: !!dt.name };
+      if (type === 'worker') { const nm = j2(dt.first, dt.last); return { title: nm || 'New worker', sub: dt.status || 'Add worker details to validate', filled: !!nm }; }
+      if (type === 'assignment') return { title: dt.jobTitle || 'New assignment', sub: j([dt.entity, dt.status]) || 'Add assignment details to validate', filled: !!dt.jobTitle };
+      return { title: dt.rname || dt.rtype || 'New rate card', sub: j([dt.rtype, dt.currency, dt.entity]) || 'Add rate details to validate', filled: !!(dt.rname || dt.rtype) };
+    };
+    const j2 = (a, b) => [a, b].filter(Boolean).join(' ');
+    // table column config per type: labels + per-record data-cell extractor (excludes #, Last modified)
+    const RDCOLS = {
+      supplier: { grid: '46px minmax(150px,1.6fr) 1fr 1.1fr 124px 84px', labels: ['#', 'Supplier', 'Country', 'Type', 'Last modified'], cells: (dt) => [dt.name, dt.country, dt.supType] },
+      worker: { grid: '46px minmax(170px,2fr) 1.1fr 124px 84px', labels: ['#', 'Worker', 'Status', 'Last modified'], cells: (dt) => [j2(dt.first, dt.last), dt.status] },
+      assignment: { grid: '46px minmax(160px,1.7fr) 1.2fr 1fr 124px 84px', labels: ['#', 'Job title', 'Legal entity', 'Status', 'Last modified'], cells: (dt) => [dt.jobTitle, dt.entity, dt.status] },
+      ratecard: { grid: '46px minmax(150px,1.6fr) 1fr 1fr 1.2fr 124px 84px', labels: ['#', 'Rate card', 'Type', 'Currency', 'Legal entity', 'Last modified'], cells: (dt) => [dt.rname, dt.rtype, dt.currency, dt.entity] },
+    };
+    const colCfg = RDCOLS[rdType];
+    const lastIdx = colCfg.labels.length - 1;
+    const cellStyleBase = 'padding:13px 14px;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;';
+    const allRecs = s.records[rdType].map((id, i) => {
+      const dt = (s.recData[rdType] && s.recData[rdType][id]) || {};
+      const setKey = (key, val) => this.setRecData(id, key, val);
+      const dataVals = colCfg.cells(dt);
+      const modified = dt._mod || '—';
+      // cells aligned to labels: [#, ...dataVals, modified]
+      const cells = [{ text: String(i + 1), style: cellStyleBase + 'color:var(--neutral-50);font-weight:600;' }]
+        .concat(dataVals.map((v, ci) => ({
+          text: (v && String(v)) || '—',
+          style: cellStyleBase + (ci === 0 ? 'font-family:var(--font-display);font-weight:600;color:var(--neutral-90);' : 'color:var(--neutral-70,#3A3731);') + (v ? '' : 'color:var(--neutral-40);'),
+        })))
+        .concat([{ text: modified, style: cellStyleBase + 'color:var(--neutral-60);font-size:12.5px;' }]);
+      return {
+        _seq: i, id, num: i + 1, singular: def.singular, open: s.openRec[rdType] === id,
+        cells,
+        chev: 'font-size:16px;color:var(--neutral-50);display:inline-block;transition:transform .15s;' + (s.openRec[rdType] === id ? 'transform:rotate(90deg);' : ''),
+        groups: def.groups.map(g => ({ name: g.name, fields: g.fields.map(d => this.buildField(d, { prefill: false, data: dt, setKey })) })),
+        onToggle: () => this.toggleRec(id),
+        onToggleStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.toggleRec(id); },
+        onRemove: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.removeRec(id); },
+        editStyle: 'width:32px;height:32px;border-radius:var(--radius-sm);border:1px solid var(--neutral-20);background:#fff;color:var(--neutral-60);cursor:pointer;display:grid;place-items:center;font-size:14px;font-family:inherit;',
+        delStyle: 'width:32px;height:32px;border-radius:var(--radius-sm);border:1px solid color-mix(in srgb,var(--color-danger) 30%,transparent);background:#fff;color:var(--color-danger);cursor:pointer;display:grid;place-items:center;font-size:15px;font-family:inherit;',
+      };
+    });
+    // sorting by clicked column
+    const sortCol = s.rdSortCol;
+    const sortDir = s.rdSortDir;
+    const parseMod = (t) => { if (!t || t === '—') return -1; if (/just now/i.test(t)) return 8.64e15; const ms = Date.parse(t); return isNaN(ms) ? 0 : ms; };
+    const sortValue = (rec) => {
+      if (sortCol === 0) return rec.num;
+      if (sortCol === lastIdx) return parseMod(rec.cells[lastIdx].text);
+      const t = rec.cells[sortCol].text; return t === '—' ? '' : t.toLowerCase();
+    };
+    let recs = allRecs;
+    if (sortCol != null) {
+      recs = allRecs.slice().sort((a, b) => {
+        const va = sortValue(a), vb = sortValue(b);
+        let c = (typeof va === 'number' && typeof vb === 'number') ? (va - vb) : String(va).localeCompare(String(vb));
+        if (c === 0) c = a._seq - b._seq;
+        return sortDir === 'asc' ? c : -c;
+      });
+    }
+    const tableGrid = colCfg.grid;
+    const tableHeaders = colCfg.labels.map((label, idx) => {
+      const active = sortCol === idx;
+      return {
+        label,
+        arrow: active ? (sortDir === 'asc' ? '↑' : '↓') : '↕',
+        onSort: () => this.toggleSort(idx),
+        style: 'display:flex;align-items:center;gap:5px;width:100%;padding:11px 14px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-align:left;'
+          + (active ? 'color:var(--striive-green);' : 'color:var(--neutral-60);'),
+        arrowStyle: 'font-size:11px;' + (active ? 'color:var(--striive-green);font-weight:700;' : 'color:var(--neutral-40);'),
+      };
+    });
+
+    const cnt = { supplier: s.records.supplier.length, worker: s.records.worker.length, assignment: s.records.assignment.length, ratecard: s.records.ratecard.length };
+    const cardCountPill = (n) => 'font-size:11px;font-weight:700;padding:4px 11px;border-radius:999px;' + (n > 0 ? 'color:var(--striive-green);background:var(--striive-green-soft);' : 'color:var(--neutral-60);background:var(--neutral-10);');
+    const rdCards = ['supplier', 'worker', 'assignment', 'ratecard'].map(t => {
+      const d = this.RD[t]; const n = cnt[t];
+      return { icon: d.icon, title: d.title, desc: d.desc, cta: n > 0 ? 'Continue' : d.addLabel,
+        countText: n > 0 ? (n + ' added') : 'None yet', countPill: cardCountPill(n),
+        onOpen: () => this.setState({ rdType: t, screen: 'rdForm', openRec: { ...s.openRec } }) };
+    });
+
+    const secKeys = ['company', 'billing', 'tax', 'org'];
+    const totalSections = 4 * eEntities.length;
+    const doneSections = eEntities.reduce((acc, e) => acc + secKeys.filter(k => (s.entityDone[e.id] || {})[k]).length, 0);
+    const pct = Math.round(doneSections / totalSections * 100);
+
+    const implSteps = [
+      { title: 'Validated data handover', status: 'Complete', state: 'done', desc: 'Onboarding & readiness data confirmed and stored as the single source of truth.' },
+      { title: 'System configuration', status: 'In progress', state: 'cur', desc: 'Headfirst configures the Bullhorn VMS from your validated data — entities, rates, approval flows.' },
+      { title: 'Integration & data load', status: 'Upcoming', state: 'todo', desc: 'Suppliers, workers and rate cards loaded into downstream systems; connections tested.' },
+      { title: 'Testing & UAT', status: 'Upcoming', state: 'todo', desc: 'You and Headfirst test key journeys: requisitions, timesheets, invoicing and reporting.' },
+      { title: 'Training & change', status: 'Upcoming', state: 'todo', desc: 'Hiring managers and approvers trained; comms and adoption materials shared.' },
+      { title: 'Go-live & hypercare', status: 'Upcoming', state: 'todo', desc: 'Programme goes live on 1 September 2026, followed by a period of hypercare support.' },
+    ].map(st => ({
+      ...st,
+      dot: 'position:absolute;left:-30px;top:18px;width:14px;height:14px;border-radius:50%;border:2px solid #fff;' + (st.state === 'done' ? 'background:var(--color-success);box-shadow:0 0 0 2px var(--color-success);' : st.state === 'cur' ? 'background:var(--striive-green);box-shadow:0 0 0 3px var(--striive-green-soft);' : 'background:var(--neutral-30);'),
+      pill: 'font-size:11px;font-weight:700;letter-spacing:0.03em;padding:4px 11px;border-radius:999px;white-space:nowrap;' + (st.state === 'done' ? 'color:var(--color-success);background:var(--color-success-soft);' : st.state === 'cur' ? 'color:var(--striive-green);background:var(--striive-green-soft);' : 'color:var(--neutral-60);background:var(--neutral-10);'),
+    }));
+
+    return {
+      showChrome: scr !== 'login',
+      scLogin: scr === 'login', scHome: scr === 'home', scOnboarding: scr === 'onboarding', scForm: scr === 'form',
+      scReadiness: scr === 'readiness', scRdForm: scr === 'rdForm', scImpl: scr === 'impl', scVariations: scr === 'variations',
+      signIn: () => this.go('home'),
+      goHome: () => this.go('home'), goOnboarding: () => this.go('onboarding'), goForm: () => this.go('form'),
+      goReadiness: () => this.go('readiness'), goImpl: () => this.go('impl'), goVariations: () => this.go('variations'),
+      navHome: this.nav(scr === 'home'), navOnb: this.nav(scr === 'onboarding' || scr === 'form'),
+      navRdy: this.nav(scr === 'readiness' || scr === 'rdForm'), navImpl: this.nav(scr === 'impl'),
+      // home
+      onbPct: pct, onbDoneCount: doneSections, onbTotalSections: totalSections, onbPctStyle: 'width:' + Math.max(pct, 3) + '%',
+      // onboarding form
+      meYes: s.multiEntity === 'yes', meNo: s.multiEntity === 'no',
+      meYesStyle: this.meBtn(s.multiEntity === 'yes'), meNoStyle: this.meBtn(s.multiEntity === 'no'),
+      setMultiYes: () => this.setState({ multiEntity: 'yes' }), setMultiNo: () => this.setState({ multiEntity: 'no', entities: s.entities.slice(0, 1), openEnt: s.entities[0].id, obSection: 'company' }),
+      entityTabs, currentEntityLabel: entLabel(curIdx),
+      canRemoveCurrent: s.multiEntity === 'yes' && curIdx > 0, removeCurrentEntity: () => this.askRemoveEntity(curId),
+      addEntity: () => this.addEntity(),
+      secCompany: s.obSection === 'company', secBilling: s.obSection === 'billing', secTax: s.obSection === 'tax', secOrg: s.obSection === 'org',
+      selCompany: () => this.selSec('company'), selBilling: () => this.selSec('billing'), selTax: () => this.selSec('tax'), selOrg: () => this.selSec('org'),
+      navSecCompany: this.secNav(s.obSection === 'company'), navSecBilling: this.secNav(s.obSection === 'billing'), navSecTax: this.secNav(s.obSection === 'tax'), navSecOrg: this.secNav(s.obSection === 'org'),
+      tickCompany: this.tick(curDone.company), tickBilling: this.tick(curDone.billing), tickTax: this.tick(curDone.tax), tickOrg: this.tick(curDone.org),
+      tickCompanyCh: curDone.company ? '✓' : '', tickBillingCh: curDone.billing ? '✓' : '', tickTaxCh: curDone.tax ? '✓' : '', tickOrgCh: curDone.org ? '✓' : '',
+      companyFields,
+      sectionTitle: cur.t, sectionDesc: cur.d, sectionStep: cur.step,
+      showPrefillBanner: s.obSection === 'company' && isPrimary && !s.confirmed, confirmedBanner: s.obSection === 'company' && isPrimary && s.confirmed,
+      confirmAll: () => this.setState({ confirmed: true }),
+      billFields: this.BILL.map(d => this.buildField(d, { prefill: isPrimary })), taxFields: this.TAX.map(d => this.buildField(d, { prefill: isPrimary })), orgFields: this.ORG.map(d => this.buildField(d, { prefill: isPrimary })),
+      saveContinue: () => this.saveContinue(), saveLabel: s.obSection === 'org' ? (s.multiEntity === 'no' ? 'Complete onboarding' : 'Save this entity') : 'Save & continue',
+      // readiness
+      rdCards,
+      selSupplier: () => this.selType('supplier'), selWorker: () => this.selType('worker'), selAssignment: () => this.selType('assignment'), selRatecard: () => this.selType('ratecard'),
+      tabSupplier: this.tab(rdType === 'supplier'), tabWorker: this.tab(rdType === 'worker'), tabAssignment: this.tab(rdType === 'assignment'), tabRatecard: this.tab(rdType === 'ratecard'),
+      tabBadgeSupplier: this.tabBadge(rdType === 'supplier'), tabBadgeWorker: this.tabBadge(rdType === 'worker'), tabBadgeAssignment: this.tabBadge(rdType === 'assignment'), tabBadgeRatecard: this.tabBadge(rdType === 'ratecard'),
+      cntSupplier: cnt.supplier, cntWorker: cnt.worker, cntAssignment: cnt.assignment, cntRatecard: cnt.ratecard,
+      typeTitle: def.title, typeDesc: def.desc, typePlural: def.plural, typeIcon: def.icon, addLabel: def.addLabel,
+      recs, emptyState: allRecs.length === 0, hasRows: allRecs.length > 0, addRec: () => this.addRec(),
+      tableHeaders, tableGrid, recordCount: allRecs.length,
+      // impl
+      implSteps,
+      // team / invite
+      team: s.contacts.map(c => ({
+        name: (c.first + ' ' + c.last).trim(), role: c.role, initials: c.initials,
+        avStyle: 'width:34px;height:34px;border-radius:50%;font-weight:700;font-size:12px;display:grid;place-items:center;font-family:var(--font-display);flex:0 0 auto;' + (c.accent ? 'background:var(--striive-green-soft);color:var(--striive-green);' : 'background:var(--neutral-10);color:var(--neutral-60);'),
+      })),
+      // user menu
+      userMenuOpen: s.userMenu,
+      userChev: 'font-size:13px;color:var(--neutral-60);display:inline-block;transition:transform .15s;margin-left:-2px;' + (s.userMenu ? 'transform:rotate(180deg);' : ''),
+      toggleUserMenu: () => this.setState(st => ({ userMenu: !st.userMenu })),
+      closeUserMenu: () => this.setState({ userMenu: false }),
+      openProfile: () => this.setState({ userMenu: false, modal: 'profile', profileEdit: false }),
+      // profile
+      profileEditing: s.profileEdit,
+      profileViewing: !s.profileEdit,
+      profileTitle: s.profileEdit ? 'Edit profile' : 'My profile',
+      profileSubtitle: s.profileEdit ? 'Update your details below.' : 'Your details and portal access.',
+      pFirst: s.profile.first, pLast: s.profile.last, pEmail: s.profile.email, pOrg: s.profile.org, pRole: s.profile.role, pPhone: s.profile.phone,
+      pFullName: (s.profile.first + ' ' + s.profile.last).trim(),
+      pInitials: ((s.profile.first[0] || '') + (s.profile.last[0] || '')).toUpperCase(),
+      startEditProfile: () => this.setState(st => ({ profileEdit: true, profileDraft: { ...st.profile } })),
+      cancelEditProfile: () => this.setState({ profileEdit: false }),
+      dFirst: (s.profileDraft || s.profile).first, dLast: (s.profileDraft || s.profile).last, dEmail: (s.profileDraft || s.profile).email, dOrg: (s.profileDraft || s.profile).org, dRole: (s.profileDraft || s.profile).role, dPhone: (s.profileDraft || s.profile).phone,
+      onPFirst: (e) => this.setDraft('first', e.target.value),
+      onPLast: (e) => this.setDraft('last', e.target.value),
+      onPEmail: (e) => this.setDraft('email', e.target.value),
+      onPOrg: (e) => this.setDraft('org', e.target.value),
+      onPRole: (e) => this.setDraft('role', e.target.value),
+      onPPhone: (e) => this.setDraft('phone', e.target.value),
+      saveProfile: () => this.setState(st => ({ profile: { ...(st.profileDraft || st.profile) }, profileEdit: false })),
+      signOut: () => this.setState({ userMenu: false, screen: 'login' }),
+      openInvite: () => this.openModal('invite'),
+      teamCount: s.contacts.length,
+      // readiness extras
+      openPlan: () => this.openModal('plan'),
+      openScope: () => this.openModal('scope'),
+      scopeValidated: s.scopeValidated,
+      scopeNotValidated: !s.scopeValidated,
+      // modals
+      modalOpen: !!s.modal, modalInvite: s.modal === 'invite', modalPlan: s.modal === 'plan', modalScope: s.modal === 'scope', modalProfile: s.modal === 'profile', modalConfirmEntity: s.modal === 'confirmEntity',
+      deleteEntityLabel: (() => { const i = eEntities.findIndex(e => e.id === s.deleteEntityId); return i > 0 ? entLabel(i) : 'this legal entity'; })(),
+      confirmRemoveEntity: () => this.confirmRemoveEntity(),
+      closeModal: () => this.closeModal(),
+      mondayHtml: (typeof window !== 'undefined' && window.__MONDAY_SRC__) || '',
+      stopProp: (e) => { e.stopPropagation(); },
+      invFirst: s.inviteForm.first, invLast: s.inviteForm.last, invEmail: s.inviteForm.email, invDept: s.inviteForm.dept, invCountry: s.inviteForm.country,
+      onInvFirst: (e) => this.setInvite('first', e.target.value),
+      onInvLast: (e) => this.setInvite('last', e.target.value),
+      onInvEmail: (e) => this.setInvite('email', e.target.value),
+      onInvDept: (e) => this.setInvite('dept', e.target.value),
+      onInvCountry: (e) => this.setInvite('country', e.target.value),
+      deptOptions: ['Procurement', 'Finance', 'Tax', 'Legal', 'Operations', 'HR', 'IT'],
+      countryOptions: this.OPT.country,
+      canInvite: !!(s.inviteForm.first && s.inviteForm.email),
+      sendInvite: () => this.sendInvite(),
+      validateScope: () => this.setState({ scopeValidated: true, modal: null }),
+    };
+  }
+}
+</script>
+
+
+</body></html>
