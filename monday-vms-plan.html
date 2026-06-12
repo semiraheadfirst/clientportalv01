@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VMS Configuration — Liander · monday.com</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Figtree', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    background: #ffffff;
+    color: #323338;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .topbar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 18px;
+    border-bottom: 1px solid #e6e9ef;
+  }
+  .monday-mark { display: flex; align-items: center; gap: 7px; }
+  .monday-mark .dots { display: flex; gap: 3px; }
+  .monday-mark .dots i { width: 8px; height: 8px; border-radius: 50%; display: block; }
+  .monday-mark .wm { font-weight: 800; font-size: 16px; letter-spacing: -0.02em; color: #323338; }
+  .topbar .crumbs { color: #676879; font-size: 13px; }
+  .topbar .spacer { flex: 1; }
+  .topbar .pill { font-size: 12px; color: #676879; background: #f6f7fb; border: 1px solid #e6e9ef; border-radius: 6px; padding: 5px 10px; }
+
+  .board-head { padding: 16px 18px 6px; }
+  .board-head h1 { margin: 0 0 4px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .board-head .sub { color: #676879; font-size: 13px; }
+  .views { display: flex; gap: 4px; padding: 8px 18px 0; border-bottom: 1px solid #e6e9ef; }
+  .view { font-size: 13px; font-weight: 500; color: #676879; padding: 8px 12px; border-bottom: 2px solid transparent; cursor: default; }
+  .view.active { color: #323338; border-bottom-color: #0073ea; font-weight: 600; }
+
+  .board { padding: 14px 18px 40px; }
+  .group { margin-bottom: 22px; }
+  .group-title { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-weight: 700; font-size: 15px; }
+  .group-title .caret { color: inherit; font-size: 12px; }
+  .group-count { color: #a0a4ad; font-weight: 500; font-size: 12px; }
+
+  table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+  th, td { text-align: left; padding: 0; }
+  .colbar td:first-child, .row td:first-child { width: 6px; padding: 0; }
+  thead th {
+    font-size: 12px; font-weight: 500; color: #676879;
+    padding: 6px 10px; border: 1px solid #e6e9ef; border-bottom: 1px solid #e6e9ef;
+    background: #fff;
+  }
+  .row td {
+    border: 1px solid #eceef3;
+    padding: 0;
+    height: 38px;
+    font-size: 13px;
+  }
+  .cell { padding: 8px 10px; display: flex; align-items: center; gap: 8px; height: 100%; }
+  .task { font-weight: 500; color: #323338; }
+  .check { width: 15px; height: 15px; border: 1.5px solid #c3c6d4; border-radius: 4px; flex: 0 0 auto; }
+
+  .owner { width: 26px; height: 26px; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 700; display: grid; place-items: center; }
+
+  .status { width: 100%; height: 100%; display: grid; place-items: center; color: #fff; font-size: 12.5px; font-weight: 500; }
+  .s-done { background: #00c875; }
+  .s-work { background: #fdab3d; }
+  .s-stuck { background: #e2445c; }
+  .s-none { background: #c4c4c4; }
+  .s-plan { background: #579bfc; }
+
+  .prio { width: 100%; height: 100%; display: grid; place-items: center; color: #fff; font-size: 12.5px; font-weight: 500; }
+  .p-high { background: #401694; }
+  .p-med { background: #5559df; }
+  .p-low { background: #9d99ff; }
+
+  .timeline { padding: 9px 10px; }
+  .tl-track { position: relative; height: 14px; background: #eceef3; border-radius: 999px; }
+  .tl-bar { position: absolute; top: 0; height: 14px; border-radius: 999px; }
+  .date { color: #676879; font-size: 12.5px; }
+  td.center { text-align: center; }
+  .status-td, .prio-td { padding: 0; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="monday-mark">
+      <span class="dots"><i style="background:#e2445c"></i><i style="background:#00c875"></i><i style="background:#fdab3d"></i></span>
+      <span class="wm">monday.com</span>
+    </div>
+    <span class="crumbs">Headfirst Global &nbsp;›&nbsp; Client Implementation &nbsp;›&nbsp; Liander</span>
+    <span class="spacer"></span>
+    <span class="pill">Shared view · read-only</span>
+  </div>
+
+  <div class="board-head">
+    <h1>VMS Configuration &amp; Implementation — Liander</h1>
+    <div class="sub">Project plan managed by Customer Success · powered by AI · last updated 11 Jun 2026</div>
+  </div>
+  <div class="views">
+    <div class="view active">Main Table</div>
+    <div class="view">Timeline</div>
+    <div class="view">Kanban</div>
+    <div class="view">Gantt</div>
+    <div class="view">Dashboard</div>
+  </div>
+
+  <div class="board" id="board"></div>
+
+  <script>
+    const COLS = [
+      { key: 'task', label: 'Task', w: '30%' },
+      { key: 'owner', label: 'Owner', w: '70px', center: true },
+      { key: 'status', label: 'Status', w: '15%' },
+      { key: 'prio', label: 'Priority', w: '12%' },
+      { key: 'timeline', label: 'Timeline', w: '20%' },
+      { key: 'date', label: 'Due date', w: '11%' },
+    ];
+    const owners = {
+      JC: '#a25ddc', FG: '#00c875', SM: '#579bfc', LM: '#ff642e', PM: '#e2445c', TK: '#037f4c'
+    };
+    const groups = [
+      { name: 'Configuration', color: '#a25ddc', rows: [
+        ['Set up legal entities in VMS', 'JC', ['s-done','Done'], ['p-high','High'], [0,28,'#a25ddc'], '5 Jul'],
+        ['Configure billing & tax rules', 'FG', ['s-work','Working on it'], ['p-high','High'], [12,46,'#a25ddc'], '12 Jul'],
+        ['Build approval workflows', 'SM', ['s-work','Working on it'], ['p-med','Medium'], [22,60,'#a25ddc'], '18 Jul'],
+        ['Set up cost centres & GL mapping', 'JC', ['s-none','Not started'], ['p-med','Medium'], [40,72,'#a25ddc'], '24 Jul'],
+      ]},
+      { name: 'Integration & Data', color: '#00c875', rows: [
+        ['Load suppliers into VMS', 'FG', ['s-work','Working on it'], ['p-high','High'], [30,58,'#00c875'], '22 Jul'],
+        ['Load workers & assignments', 'SM', ['s-none','Not started'], ['p-high','High'], [48,74,'#00c875'], '29 Jul'],
+        ['Import rate cards', 'TK', ['s-none','Not started'], ['p-med','Medium'], [52,76,'#00c875'], '31 Jul'],
+        ['Connect Bullhorn VMS integration', 'JC', ['s-stuck','Stuck'], ['p-high','High'], [44,80,'#00c875'], '2 Aug'],
+      ]},
+      { name: 'Testing & UAT', color: '#579bfc', rows: [
+        ['Requisition-to-hire test', 'SM', ['s-none','Not started'], ['p-med','Medium'], [66,86,'#579bfc'], '12 Aug'],
+        ['Timesheet & invoice test', 'PM', ['s-none','Not started'], ['p-high','High'], [70,90,'#579bfc'], '18 Aug'],
+        ['Reporting & reconciliation', 'TK', ['s-none','Not started'], ['p-low','Low'], [74,92,'#579bfc'], '22 Aug'],
+      ]},
+      { name: 'Go-live', color: '#ff642e', rows: [
+        ['Cutover plan sign-off', 'JC', ['s-none','Not started'], ['p-high','High'], [88,96,'#ff642e'], '29 Aug'],
+        ['Go-live — programme live', 'LM', ['s-none','Not started'], ['p-high','High'], [96,100,'#ff642e'], '1 Sep'],
+      ]},
+    ];
+
+    function colgroup() {
+      return '<colgroup>' + '<col style="width:6px">' + COLS.map(c => `<col style="width:${c.w}">`).join('') + '</colgroup>';
+    }
+    function cell(col, r, color) {
+      if (col.key === 'task') return `<div class="cell"><span class="check"></span><span class="task">${r[0]}</span></div>`;
+      if (col.key === 'owner') { const o = r[1]; return `<div class="cell" style="justify-content:center"><span class="owner" style="background:${owners[o]}">${o}</span></div>`; }
+      if (col.key === 'status') { const [cls, lbl] = r[2]; return `<div class="status ${cls}">${lbl}</div>`; }
+      if (col.key === 'prio') { const [cls, lbl] = r[3]; return `<div class="prio ${cls}">${lbl}</div>`; }
+      if (col.key === 'timeline') { const [a, b, col2] = r[4]; return `<div class="timeline"><div class="tl-track"><div class="tl-bar" style="left:${a}%;width:${b - a}%;background:${col2}"></div></div></div>`; }
+      if (col.key === 'date') return `<div class="cell"><span class="date">${r[5]}</span></div>`;
+      return '';
+    }
+    function render() {
+      const board = document.getElementById('board');
+      board.innerHTML = groups.map(g => {
+        const head = `<thead><tr><th style="border:none;background:none"></th>${COLS.map(c => `<th${c.center ? ' class="center"' : ''}>${c.label}</th>`).join('')}</tr></thead>`;
+        const rows = g.rows.map(r => {
+          const tds = COLS.map(c => {
+            const pad = (c.key === 'status' || c.key === 'prio') ? ' class="status-td"' : '';
+            return `<td${pad}>${cell(c, r, g.color)}</td>`;
+          }).join('');
+          return `<tr class="row"><td style="background:${g.color}"></td>${tds}</tr>`;
+        }).join('');
+        return `<div class="group">
+          <div class="group-title" style="color:${g.color}"><span class="caret">▾</span> ${g.name} <span class="group-count">${g.rows.length} items</span></div>
+          <table>${colgroup()}${head}<tbody>${rows}</tbody></table>
+        </div>`;
+      }).join('');
+    }
+    render();
+  </script>
+</body>
+</html>
